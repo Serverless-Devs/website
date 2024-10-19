@@ -105,6 +105,99 @@ sidebar:
                         link: docs/user-guide/aliyun/fc3/sync
                       - label: fc2.0 yaml 转 fc3.0 yaml
                         link: docs/user-guide/aliyun/fc3/s2tos3
+              - label: fc3-domain组件
+                items:
+                  - label: Yaml 规范
+                    link: docs/user-guide/aliyun/fc3-domain/spec
+                  - label: 部署
+                    link: docs/user-guide/aliyun/fc3-domain/deploy
+                  - label: 计划变更
+                    link: docs/user-guide/aliyun/fc3-domain/plan
+                  - label: 查看
+                    link: docs/user-guide/aliyun/fc3-domain/info
+                  - label: 删除
+                    link: docs/user-guide/aliyun/fc3-domain/remove
+              - label: flow 组件
+                items:
+                  - label: Yaml 规范
+                    link: docs/user-guide/aliyun/flow/spec
+                  - label: 部署
+                    link: docs/user-guide/aliyun/flow/deploy
+                  - label: 查看
+                    link: docs/user-guide/aliyun/flow/info
+                  - label: 删除
+                    link: docs/user-guide/aliyun/flow/remove
+                  - label: List
+                    link: docs/user-guide/aliyun/flow/list
+              - label: ros组件
+                items:
+                  - label: Yaml 规范
+                    link: docs/user-guide/aliyun/ros/spec
+                  - label: 部署
+                    link: docs/user-guide/aliyun/ros/deploy
+                  - label: 删除
+                    link: docs/user-guide/aliyun/ros/remove
+                  - label: 查看
+                    link: docs/user-guide/aliyun/ros/info
+
+              - label: fc组件(旧版/fc2.0)
+                items:
+                  - label: 注意
+                    link: docs/user-guide/aliyun/fc/tip
+                  - label: 概览
+                    link: docs/user-guide/aliyun/fc/readme
+                  - label: 构建&部署
+                    items:
+                      - label: 部署
+                        link: docs/user-guide/aliyun/fc/command/deploy
+                      - label: 构建
+                        link: docs/user-guide/aliyun/fc/command/build
+                      - label: 移除
+                        link: docs/user-guide/aliyun/fc/command/remove
+                      - label: 计划变更
+                        link: docs/user-guide/aliyun/fc/command/plan
+                  - label: 调用&调试
+                    items:
+                      - label: 本地调试
+                        link: docs/user-guide/aliyun/fc/command/local
+                      - label: 函数触发
+                        link: docs/user-guide/aliyun/fc/command/invoke
+                      - label: 实例登录
+                        link: docs/user-guide/aliyun/fc/command/instance
+                      - label: 端云联调
+                        link: docs/user-guide/aliyun/fc/command/proxied
+                  - label: 发布&配置
+                    items:
+                      - label: 版本
+                        link: docs/user-guide/aliyun/fc/command/version
+                      - label: 别名
+                        link: docs/user-guide/aliyun/fc/command/alias
+                      - label: 预留
+                        link: docs/user-guide/aliyun/fc/command/provision
+                      - label: 按量资源
+                        link: docs/user-guide/aliyun/fc/command/ondemand
+                      - label: 层
+                        link: docs/user-guide/aliyun/fc/command/layer
+                  - label: 其他
+                    items:
+                      - label: 日志查询
+                        link: docs/user-guide/aliyun/fc/command/logs
+                      - label: 查看函数
+                        link: docs/user-guide/aliyun/fc/command/info
+                      - label: 资源同步
+                        link: docs/user-guide/aliyun/fc/command/sync
+                  - label: Yaml 规范
+                    items:
+                      - label: Yaml 规范
+                        link: docs/user-guide/aliyun/fc/yaml/readme
+                      - label: Service 字段
+                        link: docs/user-guide/aliyun/fc/yaml/service
+                      - label: function 字段
+                        link: docs/user-guide/aliyun/fc/yaml/function
+                      - label: triggers 字段
+                        link: docs/user-guide/aliyun/fc/yaml/triggers
+                      - label: customDomains 字段
+                        link: docs/user-guide/aliyun/fc/yaml/customDomains
           - label: 其他云厂商组件
             autogenerate: { directory: 'docs/user-guide/other-vendor/' }
           - label: CICD 平台集成

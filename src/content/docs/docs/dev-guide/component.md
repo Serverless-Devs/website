@@ -141,15 +141,15 @@ resources:
 
 - 更改 `publish.yaml` 里的 `Version` 字段。确保版本号比现有最高版本号大 1，例如：1.0.0 -> 1.0.1。
 
-- 检测确认组件接收的参数 `Properties`后，首次发布需要先登录 `npm run login`。
+- 检测确认组件接收的参数 `Properties`后，首次发布需要先登录 `s registry login`。
 
     ```bash
-    npm run login
+    s registry login
     ```
 
   根据提示进行操作即可。
 
-- 后续直接执行 `npm run pub` 即可进行发布
+- 后续直接执行 `s registry publish` 即可进行发布
 
 ## 目录结构
 
