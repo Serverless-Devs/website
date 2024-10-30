@@ -1,53 +1,36 @@
-import { defineCollection, z } from 'astro:content';
-import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
+import { defineCollection, z } from "astro:content";
+import { docsSchema, i18nSchema } from "@astrojs/starlight/schema";
 
-const blog = defineCollection({
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		keywords: z.string().or(z.array(z.string().or(z.number())).optional()),
-		// Transform string to Date object
-		date: z.string(),
-		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-		author: z.string().optional(),
-		category: z.string().optional()
-	}),
+const docs = defineCollection({
+  schema: docsSchema({
+    extend: z.object({
+      tags: z.array(z.string()).optional(),
+      img: z.string().optional(),
+      author: z.string().optional(),
+      date: z.string().optional(),
+    }),
+  }),
 });
 
-const faq = defineCollection({
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		keywords: z.string().or(z.array(z.string().or(z.number())).optional()),
-		// Transform string to Date object
-		date: z.string(),
-		updatedDate: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
-		author: z.string().optional(),
-		category: z.string().optional()
-	}),
+const communities = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    tag: z.string(),
+    date: z.date(),
+    image: z.string(),
+    guests: z.array(
+      z.object({
+        author: z.string(),
+        work: z.string(),
+      }),
+    ),
+    video: z.string(),
+  }),
 });
-
-const download = defineCollection({
-	schema: z.object({
-		title: z.string(),
-		order: z.number(),
-	}),
-});
-
 
 export const collections = {
-	docs: defineCollection({
-		schema: docsSchema({
-			extend: z.object({
-				keywords: z.string().or(z.array(z.string().or(z.number())).optional()),
-				position: z.number().optional(),
-			}),
-		})
-	}),
-	i18n: defineCollection({ type: 'data', schema: i18nSchema() }),
-	blog,
-	download,
-	faq,
+  docs,
+  communities,
+  i18n: defineCollection({ type: "data", schema: i18nSchema() }),
 };

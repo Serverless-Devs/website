@@ -1,0 +1,61 @@
+---
+import { Icon } from "astro-icon/components";
+import CNCF_LOGO from "@assets/CNCF.svg";
+import { Picture } from "astro:assets";
+
+interface FooterLinks{
+  icon?: string;
+  content?: string;
+  url: string;
+}
+
+const footerLinks:FooterLinks[] = [{
+  icon:'bx:bxl-github',
+  url:"https://github.com/serverless-devs/serverless-devs"
+},{
+  icon:'bx:bxl-git',
+  url:'https://gitee.com/serverless-devs/Serverless-Devs'
+},{
+  content:'帮助文档',
+  url:'http://docs.serverless-devs.com/'
+},{
+  content:'Serverless 社区',
+  url:'http://i.serverless-devs.com/'
+},{
+  content:'Registry',
+  url:'https://registry.serverless-devs.com/'
+}];
+
+---
+
+<footer class="my-20">
+  <div class="flex flex-col items-center">
+    <p>Serverless Devs 是 <a href="https://cncf.io/" class="text-accent">CNCF (云原生基金会)</a> 沙箱项目</p>
+    <Picture
+        src={CNCF_LOGO}
+        alt="CNCF"
+        loading="eager"
+        class="w-11/12 lg:w-[550px]"
+        format="avif"
+    />
+  </div>
+
+  <div class="text-center text-sm text-info-500 font-light mt-10">
+    Copyright © {new Date().getFullYear()} The Linux Foundation. All rights reserved.<br>
+    The Linux Foundation has registered trademarks and uses trademarks.<br>
+    For a list of trademarks of The Linux Foundation, please see our Trademark Usage page.
+  </div>
+  <div class="text-center flex flex-row content-center justify-center gap-5 mt-5">
+    {
+        footerLinks.map((item) => {
+            return (
+                <a href={item.url} class="text-sm leading-none text-info-500 font-light">
+                    {
+                        item.icon ? <Icon name={item.icon}></Icon> : item.content
+                    }
+                </a>
+            )
+        })
+    }
+  </div>
+</footer>

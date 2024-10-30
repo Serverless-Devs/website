@@ -1,0 +1,57 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+export async function getStaticPaths() {
+    const allCommunities = await getCollection('communities');
+
+    return allCommunities.map((it) => ({
+        params: { id: it.slug },
+    }));
+}
+
+import { getCollection } from 'astro:content';
+import {Icon} from "astro-icon/components";
+const {id} = Astro.params;
+
+const allCommunities = await getCollection('communities');
+const currCommunity = allCommunities.find(it => it.slug === id);
+---
+
+
+
+<Layout>
+    <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-col items-start gap-10">
+        <a class="flex flex-row items-center gap-2 px-5 py-2 bg-theme hover:bg-[#85a1ff] text-white rounded-full" href="javascript:history.back(-1)">
+            <Icon name="bx:bx-arrow-back" size="20" />
+            <span>返回</span>
+        </a>
+
+        <div class="bg-theme flex flex-col gap-5 w-full py-10 px-10 border border-theme-500 rounded-2xl">
+            <div class="text-sm flex flex-row gap-8">
+                <span>{currCommunity.data.date.toLocaleDateString()}</span>
+                <span>{currCommunity.data.description}</span>
+            </div>
+            <p class="text-3xl font-bold">{currCommunity.data.title}</p>
+            <p class="text-sm">{`嘉宾：${currCommunity.data.guests.map(guest=>guest.author).join(',')}`}</p>
+        </div>
+
+        <div class="w-full">
+            <p class="font-bold text-xl">视频回顾</p>
+            <video src={currCommunity.data.video} autoplay={true} controls class="w-full mt-[1rem]"></video>
+        </div>
+
+        <div class="w-full">
+            <p class="font-bold text-xl mb-5">嘉宾简介</p>
+            {
+                currCommunity.data.guests.map(guest =>(
+                    <div class="bg-theme w-full py-10 px-5 rounded-lg border border-theme-500 flex flex-row gap-4">
+                        <Icon name="bx:bx-user" size="50" />
+                        <div>
+                            <p class="font-bold text-xl">{guest.author}</p>
+                            <p class="text-sm">{guest.work}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>

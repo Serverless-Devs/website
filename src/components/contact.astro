@@ -1,0 +1,152 @@
+---
+import Link from "./link.astro";
+import {Icon} from "astro-icon/components";
+
+interface Contacts{
+  icon: string;
+  category: string;
+  contacts: {
+    content: string;
+    link?: string;
+  }[];
+}
+
+const contacts:Contacts[]=[{
+  icon: "bx:bxs-message",
+  category: "加入社群",
+  contacts: [{
+    content: "钉钉群号：33947367"
+  },{
+    content: "微信小助手：xiaojiangwh"
+  }]
+},{
+  icon: "bx:bxl-git",
+  category: "代码仓库",
+  contacts: [{
+    content: "Serverless Devs Github 仓库",
+    link:"https://github.com/serverless-devs/serverless-devs"
+  },{
+    content: "Serverless Devs Gitee 仓库",
+    link:"https://gitee.com/serverless-devs/serverless-devs"
+  }]
+},{
+  icon: "bx:bxs-envelope",
+  category: "发送邮件",
+  contacts: [{
+    content: "官方邮箱：service@devsapp.cn"
+  },{
+    content: "发起人邮箱：service@52exe.cn"
+  }]
+}]
+
+const contactForm = [{
+  name: "name",
+  placeholder:"请输入您的名字",
+  type:'input'
+},{
+  name: "email",
+  placeholder:"请输入您的邮箱",
+  type:'input'
+},{
+  name: "content",
+  placeholder:"您的反馈内容",
+  type:'textarea'
+}]
+---
+
+<script>
+  import axios from 'axios';
+
+  document.getElementById("submit").addEventListener('click', function() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const content = document.getElementById("content").value;
+
+    if (!name || !email || !content) {
+      alert("请确保所有字段都已填写！");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("请输入有效的电子邮件地址！");
+      return;
+    }
+
+    axios.post("https://1767215449378635.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/registry_github.LATEST/sendemail/", {
+      name: name,
+      email: email,
+      content: content
+    })
+        .then(function(response) {
+          if (response.status === 200) {
+            alert("我们已经收到了您的信息，会尽快给您回信");
+          }
+        })
+        .catch(function(error) {
+          console.error('Failed to send data:', error);
+          alert("发送失败，请稍后再试！");
+        });
+  });
+
+</script>
+
+
+<div class="mt-32">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+    联系我们
+  </h2>
+  <p class="text-lg mt-4 text-slate-600 text-center">
+    和我们取得联系，共同繁荣 Serverless Devs社区。
+  </p>
+
+  <div class="flex flex-col items-center lg:flex-row lg:justify-between mt-5">
+    <div class="flex flex-col gap-5 w-1/2">
+      {
+          contacts.map((item, index) => (
+              <div class="flex flex-row items-center gap-5">
+                <div class="flex bg-black rounded-full p-4">
+                  <Icon class="text-2xl text-white" name={item.icon} />
+                </div>
+
+                <div class="flex flex-col">
+                  <div class="text-lg font-bold mt-2">
+                    {item.category}
+                  </div>
+                  <div class="text-lg font-bold mt-2">
+                    {
+                      item.contacts.map((_item, index) => (
+                          <div>
+                            <a class="font-light" href={_item.link}>
+                              {_item.content}
+                            </a>
+                          </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+          ))
+      }
+    </div>
+    <div class="w-1/2 max-w-96 mt-10">
+      <p class="text-2xl font-light">快速反馈</p>
+      <p class="text-sm font-light">您有任何问题，都可以在这里和我们快速反馈</p>
+      <div class="mt-10 lg:mt-0">
+          {
+            contactForm.map(({name,placeholder,type}) => (
+                  <div class="mt-2.5">
+                    {type == "input" && (<input type="text" name={name} placeholder={placeholder} id={name} autocomplete="given-name" class="outline-0 block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">)}
+
+                    {type == "textarea" && (<textarea name={name} id={name} placeholder={placeholder} rows="4" class="outline-0  block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>)}
+
+                  </div>
+              ))
+          }
+      </div>
+      <div class="mt-10">
+        <button type="submit" id="submit" class="block w-full rounded-md bg-theme-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">立即提交</button>
+      </div>
+    </div>
+  </div>
+</div>

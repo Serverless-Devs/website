@@ -1,0 +1,123 @@
+---
+import type { GetStaticPathsOptions } from "astro";
+import {TAGS} from '../../../utils/config';
+const { page } = Astro.props;
+const { tag } = Astro.params;
+import { getCollection } from 'astro:content';
+import Layout from "../../../layouts/Layout.astro";
+let allLearningPosts = (await getCollection('docs')).filter(content=>content.slug.startsWith('learning'));
+if (tag != 'all') allLearningPosts = allLearningPosts.filter(post=>post.data.tags.includes(tag))
+
+const allPages =  [...Array(page?.lastPage ?? allLearningPosts).keys()].map((num) => {
+    return `/learning/${tag}/${num === 0 ? "" : `${String(num + 1)}/`}`;
+})
+
+const learningChannels=[{
+    name:'基础学习资料',
+    pages:[{
+        name:'基础原理和架构',
+        url:""
+    },{
+        name:'应用场景',
+        url:""
+    },{
+        name:'上手体验',
+        url:""
+    }]
+},{
+    name:'强力推荐',
+    pages:[{
+        name:'基础原理和架构',
+        url:""
+    },{
+        name:'应用场景',
+        url:""
+    },{
+        name:'上手体验',
+        url:""
+    }]
+}]
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+    const allLearningPosts = (await getCollection('docs')).filter(content=>content.slug.startsWith('learning'));
+    const allTags = ['all',...TAGS.map(tag=>tag.slug)];
+
+    const sortedPosts = allLearningPosts.sort(
+        (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
+    );
+
+    return allTags.flatMap((tag) => {
+        const filteredPosts = sortedPosts.filter((post) =>
+            tag == 'all' || post.data?.tags?.includes(tag)
+        );
+
+        return paginate(filteredPosts, {
+            params: { tag },
+            pageSize: 10,
+        });
+    });
+}
+
+
+
+---
+
+<Layout>
+    <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-row items-start gap-5">
+        <div class="flex flex-col flex-grow-0 gap-5">
+            <div class="flex flex-row gap-2">
+                {
+                    [{
+                        name:'全部',
+                        slug:'all'
+                    },...TAGS].map((currTag) =>(
+                            <a href={`/learning/${currTag.slug}`} class=`${currTag.slug === tag ? 'bg-theme-500' : 'bg-theme'} border border-theme-500 text-white text-sm font-bold py-2 px-4 rounded-full m-2`>{currTag.name}</a>
+                    ))
+                }
+            </div>
+            <div class="flex flex-row">
+                <div class="flex flex-col gap-5">
+                    {
+                        allLearningPosts.map(post=>(
+
+                                <div class="flex flex-row items-center gap-5 bg-[#6a8dfd] shadow-md border border-theme-500 px-5 py-5 rounded-2xl flex-shrink-0 flex-grow-0">
+                                    <img class="w-5/12 h-full object-cover rounded-lg overflow-hidden left-content" src={post.data.img} alt={post.data.title}></img>
+                                    <div class="flex flex-col gap-5 text-white">
+                                        <span class="text-sm">{post.data.date}</span>
+                                        <a href={'/' + post.slug} class="font-bold">{post.data.title}</a>
+                                        <p class="">{post.data.description}</p>
+                                        <div class="w-full flex flex-row justify-between">
+                                            <span class="text-sm">作者：{post.data.author}</span>
+                                            <div class="flex flex-row gap-5">
+                                                {
+                                                    post.data.tags.map(tag=> (
+                                                            <span class="text-sm">#{ TAGS.find(TAG=>TAG.slug == tag).name}</span>
+                                                    ))
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col w-5/12 px-10 items-start gap-8 mt-[35px]">
+                {
+                    learningChannels.map(channel=>(
+                            <div class="w-full flex flex-col gap-2">
+                                <p class="font-bold text-xl">{channel.name}</p>
+                                <div class="flex flex-col w-full bg-[#6a8dfd] shadow-md border border-theme-500 px-5 py-5 gap-3 border-b rounded-2xl">
+                                    {
+                                        channel.pages.map(page=>(
+                                                <a class="text-white" href={page.url}>{page.name}</a>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                    ))
+                }
+        </div>
+    </div>
+</Layout>

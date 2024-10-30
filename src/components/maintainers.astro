@@ -1,0 +1,98 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+
+const maintainers = [{
+  name:"Anycodes",
+  description:"Maintainer",
+  avatar:"https://avatars.githubusercontent.com/u/21079031?v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"http://github.com/anycodes"
+  },{
+    icon:"bx:bx-leaf",
+    url:"http://bluo.cn/"
+  }]
+},{
+  name:"heimanba",
+  description:"Maintainer",
+  avatar:"https://avatars.githubusercontent.com/u/5129967?v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"http://github.com/heimanba"
+  }]
+},{
+  name:"jessie",
+  description:"Contributor",
+  avatar:"https://avatars.githubusercontent.com/u/45677661?v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"https://github.com/jessie123jiang"
+  },{
+    icon:"bx:bxs-group",
+    url:"http://i.serverless-devs.com/home.php?mod=space&uid=2"
+  }]
+},{
+  name:"hanxie",
+  description:"Maintainer",
+  avatar:"https://avatars.githubusercontent.com/u/4457084?s=60&v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"https://github.com/jessie123jiang"
+  }]
+},{
+  name:"lowkeyrd",
+  description:"Maintainer",
+  avatar:"https://avatars.githubusercontent.com/u/5763215?v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"https://github.com/lowkeyrd"
+  }]
+},{
+  name:"Anycodes",
+  description:"Maintainer",
+  avatar:"https://avatars.githubusercontent.com/u/16363180?v=4",
+  links:[{
+    icon:"bx:bxl-github",
+    url:"https://github.com/DevDengChao"
+  }]
+}]
+---
+
+<div class="mt-24">
+  <h2 class="text-center text-slate-500 font-bold text-4xl">iServerless 开发者社区</h2>
+  <p class="text-center mt-4 text-info font-light">活跃的开发者社区，让开发者自由分享看法、期待，与更多志同道合的同学，共同建设 Serverless 生态。</p>
+  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
+    {
+      maintainers.map(maintainer=>(
+          <div class="flex flex-col items-center gap-3">
+            <Picture
+                class="rounded-full"
+                src={maintainer.avatar}
+                alt="Serverless Devs LOGO"
+                width="100"
+                height="100"
+                loading="eager"
+            />
+
+            <div class="flex flex-col items-center">
+              <p class="text-black font-normal">{maintainer.name}</p>
+              <p class="text-info font-light">{maintainer.description}</p>
+            </div>
+
+            <div class="flex flex-row items-center justify-center gap-3">
+              {
+                maintainer.links.map(link=>(
+                    <a href={link.url} target="_blank" class="text-white rounded-full bg-theme p-2">
+                      <Icon name={link.icon} size="20" />
+                    </a>
+                ))
+              }
+            </div>
+          </div>
+      ))
+    }
+
+  </div>
+</div>

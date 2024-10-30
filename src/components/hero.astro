@@ -1,0 +1,55 @@
+---
+import { Picture } from "astro:assets";
+import frameworkImage from "@assets/framework.png";
+import Link from "./link.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<main
+	class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24"
+>
+	<div class="py-6 md:order-1 hidden md:block">
+		<Picture
+			src={frameworkImage}
+			alt="Serverless Devs LOGO"
+			widths={[200, 400, 600]}
+			sizes="(max-width: 800px) 100vw, 620px"
+			loading="eager"
+			format="avif"
+		/>
+	</div>
+	<div>
+		<h1
+			class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white lg:tracking-tight xl:tracking-tighter"
+			style="-webkit-text-stroke: 1px rgba(102, 137, 253,0.8);">
+
+			下一代Serverless<wbr /> 开发运维平台
+		</h1>
+		<p class="text-lg font-thin mt-4 max-w-xl text-[#323540]">
+			Serverless Devs 是 Serverless 领域的工具链开源项目；通过组件化、应用化的思路，可以让开发者一键部署 Serverless 应用到多云，并实现全生命周期开发和运维。
+		</p>
+		<div class="mt-6 flex flex-col sm:flex-row gap-3">
+			<Link
+				href="/docs/getting-started"
+				target="_blank"
+				class="flex gap-1 items-center justify-center"
+				rel="noopener"
+			>
+				<Icon class="text-white w-5 h-5" name="bx:bxs-rocket" />
+
+				快速开始
+			</Link>
+			<Link
+				size="lg"
+				style="outline"
+				rel="noopener"
+				href="https://github.com/serverless-devs/serverless-devs"
+				class="flex gap-1 items-center justify-center"
+				target="_blank"
+			>
+				<Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+				开源仓库
+			</Link>
+		</div>
+	</div>
+</main>

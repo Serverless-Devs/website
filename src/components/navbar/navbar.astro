@@ -1,0 +1,110 @@
+---
+import Container from "@components/container.astro";
+import { Picture } from "astro:assets";
+import logoImage from "@assets/logo.png";
+import Dropdown from "./dropdown.astro";
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import SearchBar from '@astrojs/starlight/components/Search.astro'
+import '/node_modules/@astrojs/starlight/style/props.css';
+
+const menuItems = [
+	{
+		title: "首页",
+		path: "/"
+	},
+	{
+		title: "文档",
+		path: "/docs/overview"
+	},
+	{
+		title: "Registry",
+		path: "https://registry.serverless-devs.com/"
+	},
+	{
+		title: "社区",
+		path: "/community"
+	},
+	{
+		title: "博客",
+		path: "/learning/all"
+	},
+	{
+		title: "答疑",
+		path: "/faq"
+	},
+	{
+		title: "版本",
+		path: "/versions"
+	},
+	{
+		title:'AI Mall',
+		path:'/aiMall'
+	}
+];
+---
+
+<Container>
+	<header class="flex flex-col lg:flex-row justify-start lg:gap-20 items-center my-5">
+		<div class="w-full hero-background"></div>
+		<Astronav>
+			<div class="flex flex-row gap-10">
+				<div class="flex w-full lg:w-auto items-center justify-between">
+					<a href="/" class="w-14">
+						<Picture
+							src={logoImage}
+							alt="Serverless Devs"
+							widths={[200, 400, 600]}
+							sizes="(max-width: 800px) 100vw, 620px"
+							loading="eager"
+							format="avif"
+						/>
+					</a>
+					<div class="block lg:hidden">
+						<MenuIcon class="w-4 h-4 text-gray-800" />
+					</div>
+				</div>
+				<MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+					<ul class="flex flex-col lg:flex-row lg:gap-3 pl-10 pr-10 pt-5 pb-5 lg:p-0 backdrop-blur">
+						{
+							menuItems.map((item, index) => (
+								<>
+									{item?.children && (
+										<Dropdown
+											title={item.title}
+											children={item?.children}
+											lastItem={index === menuItems.length - 1}
+										/>
+									)}
+
+									{!item?.children && (
+										<li>
+											<a
+												href={item.path}
+												class="flex text-white font-light lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900 no-underline"
+											>
+												<span> {item.title}</span>
+											</a>
+										</li>
+									)}
+								</>
+							))
+						}
+					</ul>
+				</MenuItems>
+			</div>
+			<SearchBar labels={{'search.label':'搜索文档'}}></SearchBar>
+		</Astronav>
+	</header>
+</Container>
+
+
+<style>
+	.hero-background{
+		position: absolute;
+		z-index:-10000;
+		right: 24%;
+		top: -833px;
+		height: 1647.8px;
+		background: radial-gradient(47.08% 51.77% at 40.57063665217249% 45.69726830970343%, rgba(45, 94, 252, 1) 0%, rgba(255, 255, 255, 1) 99.54%);
+	}
+</style>

@@ -1,0 +1,105 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/bricolage-grotesque";
+import "../style/global.css";
+
+export interface Props {
+	title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = title
+	? title + " | " + "Serverless Devs"
+	: "Serverless Devs 官网 - 一键部署AI/WEB/函数应用到多云的开发运维平台";
+---
+
+<!doctype html>
+<html lang="zh" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<SEO
+			title={makeTitle}
+			canonical={canonicalURL}
+			extend={{
+				meta: [
+					{
+						name: "keywords",
+						content: "Serverless, Serverless Devs, 中文社区, Serverless 社区"
+					},
+					{
+						name: "author",
+						content: "Serverless Devs"
+					}
+				]
+			}}
+		/>
+	</head>
+
+	<script>
+		//cnpilot
+		function addCopilot() {
+			const copilotJSScript = document.createElement("script");
+			copilotJSScript.type = "text/javascript";
+			copilotJSScript.src =
+				"https://g.alicdn.com/cm-design/copilot-booter/0.0.26/copilot-booter.js";
+			copilotJSScript.addEventListener("load", function () {
+				if (window.CNPilot) {
+					window.CNPilot.mounted({
+						CNPilot_OPEN_SOURCE: [
+							"www.serverless-devs.com",
+							"devs-website-test.fcv3.1003293809975419.cn-hangzhou.fc.devsapp.net",
+						],
+						CNPilot_OPEN_SOURCE_API: "https://ai.nacos.io",
+						CNPilot_OPEN_SOURCE_PRODUCT_NAME: "ServerlessDevs",
+						showFloatICON: true,
+						globalStyle: {
+							top: "0px",
+							// width: "14px",
+							// height: "14px",
+						},
+						entryIconProps:{                                      // 入口 ICON 配置
+							'position-type':'updown',
+							'icon-hover-text':'专家答疑',
+							'icon-style': {
+								color:'red', // 配置文字颜色
+								background:'white', // 配置背景色
+								border:'2px solid red', // 配置边框
+								borderRadius:'20px', // 配置圆角
+								// ...其他 css
+							}
+						},
+						headerProps:{
+							// titleIcon: 'https://xxxxxx.jpeg',                // 自定义 header icon 图片
+							titleText: "无疑 AI答疑专家",                       // 自定义 header 文字
+							closeIcon: { show: true },                          // 展示 header 部分右边关闭按钮
+						}
+					});
+				}
+			});
+			document.body.append(copilotJSScript);
+		}
+
+		addCopilot();
+	</script>
+
+	<body>
+		<Navbar />
+		<slot />
+		<Footer />
+		<style is:global>
+			img {
+				content-visibility: auto;
+			}
+		</style>
+	</body>
+</html>
+
+

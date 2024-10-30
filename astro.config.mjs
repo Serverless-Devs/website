@@ -1,25 +1,28 @@
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import starlight from '@astrojs/starlight';
-import partytown from '@astrojs/partytown';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
+import partytown from "@astrojs/partytown";
 import preact from "@astrojs/preact";
 import { autoImportComponents } from "@serverless-cd/goat-ui/src/utils";
-import locales from './src/i18n/languages';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 // import compress from 'astro-compress';
-import rehypeExternalLinks from 'rehype-external-links'
+import rehypeExternalLinks from "rehype-external-links";
 
-import { remarkRemoveMdLinks, remarkRemovePlainLanguageCode, remarkRemoveRepeatHeader, addPrefixImageLink, setLinkReferrer } from './src/utils/frontmatter.mjs';
-import { ANALYTICS, SITE } from './src/utils/config.ts';
-import goatConfig from './goat.config';
-import { starlightAsides } from './node_modules/@astrojs/starlight/integrations/asides';
+import {
+  addPrefixImageLink,
+  remarkRemoveMdLinks,
+  remarkRemovePlainLanguageCode,
+  remarkRemoveRepeatHeader,
+  setLinkReferrer,
+} from "./src/utils/frontmatter.mjs";
+import { ANALYTICS, SIDEBAR, SITE } from "./src/utils/config.ts";
+import { starlightAsides } from "./node_modules/@astrojs/starlight/integrations/asides";
 import topLevelAwait from "vite-plugin-top-level-await";
-
-import icon from 'astro-icon';
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 const whenExternalScripts = (items = []) =>
-  ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown
+  ANALYTICS.vendors.googleAnalytics.id &&
+  ANALYTICS.vendors.googleAnalytics.partytown
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
@@ -27,93 +30,84 @@ const whenExternalScripts = (items = []) =>
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.DEPLOY_SITE || SITE.site,
-	base: SITE.base,
-	trailingSlash: SITE.trailingSlash,
-	image: {
-		domain: ["img.alicdn"]
-	},
+  site: process.env.DEPLOY_SITE || SITE.site,
+  base: SITE.base,
+  trailingSlash: SITE.trailingSlash,
+  image: {
+    domain: ["img.alicdn"],
+  },
 
-	integrations: [
-		starlight({
-			title: SITE.name,
-			favicon: '/favicon.png',
-			social: {
-				github: 'https://github.com/withastro/starlight'
-			},
-			expressiveCode: {
-				themes: ['github-dark'], //TODO: 待调研
-			},
-			components: {
-				TableOfContents: './src/components/starlight/TableOfContents/index.astro',
-				Header: './src/components/starlight/Header.astro',
-				Head: './src/components/starlight/Head.astro',
-				Sidebar: './src/components/starlight/Sidebar.astro',
-				PageFrame: "./src/components/starlight/PageFrame.astro",
-				SkipLink: "./src/components/starlight/SkipLink.astro",
-				TwoColumnContent: "./src/components/starlight/TwoColumnContent.astro",
-				PageSidebar: "./src/components/starlight/PageSidebar.astro",
-				PageTitle: "./src/components/starlight/PageTitle.astro",
-				ContentPanel: "./src/components/starlight/ContentPanel.astro",
-				Pagination: "./src/components/starlight/Pagination.astro",
-				Banner: "./src/components/starlight/Banner.astro",
-			},
-			editLink: {
-				baseUrl: SITE.websiteGithubUrl,
-			},
-			locales,
-			customCss: ['./src/style/global.css','./src/style/fonts.css'],
-		}),
-		autoImportComponents(),
-		tailwind({ applyBaseStyles: false }),
-		icon({
-			tabler: ['book', 'pencil'],
-			'ant-design':['github-filled'],
-			basil:['document-outline']
-		}),
-		preact({ compat: true }),
-		{
-			name: '@goat:config',
-			hooks: {
-				"astro:server:setup": async (options) => {
-					await goatConfig();
-				},
-				"astro:build:setup": async (options) => {
-					await goatConfig();
-				}
-			}
-		},
-		...whenExternalScripts(() =>
-		partytown({
-		  config: { forward: ['dataLayer.push'] },
-		})
-	  ),
-	],
-	markdown: {
-		rehypePlugins: [
-			// 在这里添加 rehype-external-links 插件配置
-			[rehypeExternalLinks, {
-				target: '_blank'
-			}]],
-		remarkPlugins: [
-			remarkRemoveMdLinks,
-			remarkRemovePlainLanguageCode,
-			remarkRemoveRepeatHeader,
-			addPrefixImageLink,
-			starlightAsides,
-			setLinkReferrer
-		]
-	},
-	vite: {
-		build: {
-		  target: "chrome68",
-		},
-		plugins: [topLevelAwait()],
-	},
-	// TODO: 梳理redirects
-	redirects: {
-		'/en-us/': '/en/',
-		'/[...slug].html': '/[...slug]',
-		'/docs/': '/docs/2022/overview/what-is-sca/',
-	}
+  integrations: [
+    autoImportComponents(),
+    starlight({
+      title: SITE.name,
+      favicon: "/favicon.png",
+      logo: {
+        src: "./src/assets/logo.png",
+        replacesTitle: true,
+      },
+      disable404Route: true,
+      social: {
+        github: "https://github.com/Serverless-Devs/Serverless-Devs",
+      },
+      expressiveCode: {
+        themes: ["github-dark"], //TODO: 待调研
+      },
+      editLink: {
+        baseUrl: SITE.websiteGithubUrl,
+      },
+      sidebar: SIDEBAR,
+      plugins: [
+        starlightUtils({
+          multiSidebar: {
+            switcherStyle: "hidden",
+          },
+        }),
+      ],
+      // locales,
+      // customCss: ['./src/style/global.css','./src/style/fonts.css'],
+    }),
+    tailwind({ applyBaseStyles: false }),
+    icon({
+      tabler: ["book", "pencil"],
+      "ant-design": ["github-filled"],
+      basil: ["document-outline"],
+    }),
+    preact({ compat: true }),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ["dataLayer.push"] },
+      }),
+    ),
+  ],
+  markdown: {
+    rehypePlugins: [
+      // 在这里添加 rehype-external-links 插件配置
+      [
+        rehypeExternalLinks,
+        {
+          target: "_blank",
+        },
+      ],
+    ],
+    remarkPlugins: [
+      remarkRemoveMdLinks,
+      remarkRemovePlainLanguageCode,
+      remarkRemoveRepeatHeader,
+      addPrefixImageLink,
+      starlightAsides,
+      setLinkReferrer,
+    ],
+  },
+  vite: {
+    build: {
+      target: "chrome68",
+    },
+    plugins: [topLevelAwait()],
+  },
+  // TODO: 梳理redirects
+  redirects: {
+    "/fc/": "docs/user-guide/aliyun/fc/readme",
+    "/serverless-devs/command/readme.md": "docs/user-guide/aliyun/#fc3",
+  },
 });

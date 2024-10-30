@@ -1,0 +1,80 @@
+---
+import type { GetStaticPathsOptions } from "astro";
+const { page } = Astro.props;
+import Layout from "../../layouts/Layout.astro";
+const products = [{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+},{
+    title:'start-rag-on-flow',
+    date:'2024-08-30',
+    description:'基于流程构建 RAG 应用',
+    url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+}]
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+    const products = [{
+        title:'start-rag-on-flow',
+        date:'2024-08-30',
+        description:'基于流程构建 RAG 应用',
+        url:'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }]
+
+    return paginate(products, {
+        pageSize: 10,
+    });
+}
+---
+
+<Layout>
+    <div class="max-w-screen-xl m-auto mt-24 px-5 flex flex-row items-start gap-5">
+        <div class="flex flex-col flex-grow-0 gap-5">
+            <div class="flex flex-row">
+                <div class="grid lg:grid-cols-5 gap-8 md:grid-cols-4 grid-cols-2">
+                    {
+                        products.map(product=>(
+
+                                <div class="flex flex-row items-center gap-5 bg-[#6a8dfd] shadow-md border border-theme-500 px-5 py-5 rounded-2xl flex-shrink-0 flex-grow-0">
+                                    <div class="flex flex-col gap-5 text-white">
+                                        <a href={product.url} class="font-bold text-lg">{product.title}</a>
+                                        <span class="text-sm">{product.date}</span>
+                                        <p class="text-sm">{product.description}</p>
+                                        <div class="flex flex-row gap-5">
+                                            <a href={product.url} class="bg-white text-theme-500 px-5 py-2 rounded-md">查看详情</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

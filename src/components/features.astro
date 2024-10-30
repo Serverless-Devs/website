@@ -1,0 +1,159 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+
+import promo1 from "@assets/promo-1.png";
+import frameworkImage from "@assets/framework.png";
+
+const features = [
+  {
+    title: "更开源",
+    description:
+      "Serverless Devs 项目以开源形式进行建设，人人可参与，人人可贡献，希望通过开源建设，可以让开发者们\"做主\"自己的工具，共建\"生产力\"。",
+    icon: "bx:bxs-folder-open",
+  },
+  {
+    title: "更开放",
+    description:
+      "共建Serverless Registry开放生态，类似于 npm、pypi，Serverless Registry 是 Serverless 领域的生态开放基石。",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    title: "更自由",
+    description:
+      "基于组件化和插件化的设计思路，Serverless Devs 无厂商锁定，帮助开发者快速部署基于多云、多产品的应用。",
+    icon: "bx:bxs-lock-open",
+  },
+  {
+    title: "更完整",
+    description:
+      "支持Serverless全生命周期管理，提供Serverless架构下一键应用部署、一站式开发、调试、测试、部署、运维等完善工具链，帮助您分分钟轻松玩转 Serverless 架构。",
+    icon: "bx:bxs-box",
+  },
+  {
+    title: "更简单",
+    description:
+      "Serverless Registry 开放大量应用，通过应用的模式，为开发者提供多种形式，多种领域以及多种场景的上手案例，轻松一键部署。",
+    icon: "bx:bxs-happy",
+  },
+  {
+    title: "易集成",
+    description:
+      "通过组件化的支持，非常简单的与传统的生态进行有机结合，非常简单的被集成到海量的自动化流程中",
+    icon: "bx:bxs-layout",
+  },
+];
+
+//["应用纬度的创建更新","应用纬度的环境划分","应用纬度的资源管理"]
+const promo1Features = [{
+  content:"应用纬度的创建更新",
+  icon:"bx:bxs-component"
+},{
+  content:"应用纬度的环境划分",
+  icon:"bx:bxs-cube"
+},{
+  content:"应用纬度的资源管理",
+  icon:"bx:bxs-layer"
+}]
+---
+
+<!--总概述-->
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    强大、完善、开放的Serverless工具链
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    让你像玩手机一样轻松玩转Serverless。
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed font-light">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<!--亮点一：Serverless 应用全生命周期管理-->
+
+<div class="mt-24 text-right">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Serverless 应用全生命周期管理
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    保姆级的全流程管理，让Serverless不再繁琐，一步到位。
+  </p>
+</div>
+
+<div class="flex flex-col items-end gap-10 lg:flex-row lg:gap-80 mt-12 justify-end">
+  <Picture
+      src={promo1}
+      alt="Serverless Devs Promot 1"
+      loading="eager"
+      class="w-80"
+      format="avif"
+  />
+  <div class="lg:w-1/3 w-full flex flex-col gap-16 justify-center">
+    <div class="flex flex-col gap-4 items-end">
+      {
+        promo1Features.map((item) => (
+            <div class="flex gap-4 items-start">
+              <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+                <Icon class="text-white" name={item.icon} />
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">{item.content}</h3>
+              </div>
+            </div>
+        ))
+      }
+    </div>
+    <p class="font-light text-right">为开发者提供 Serverless 全生命周期管理工具，帮助开发者从体验到开发、部署、运维的路径顺畅，提供好用且感动的 Serverless 工具链。</p>
+  </div>
+</div>
+
+<!--亮点二：开放的Serverless 包平台-->
+
+<div class="mt-24">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    开放的Serverless 包平台
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    一键部署，快速上线，像用手机一样，玩转Serverless。
+  </p>
+</div>
+
+<div class="flex flex-col gap-10 lg:flex-row lg:gap-60 mt-12">
+  <div class="w-full lg:w-1/3 flex flex-col gap-16 justify-center">
+   <div class="font-light flex flex-col gap-5">
+     <p>Serverless Registry 是一个无厂商锁定的 Serverless 包管理平台，帮助开发者非常简单、方便、快速的进行上手 Serverless 架构，助力开发者可以像使用手机一样，玩转 Serverless 架构。</p>
+     <p>
+       通过开源开放的形式建设，致力于成为 Serverless 领域的无厂商所定的包管理平台，构建 Serverless 生态基石。
+     </p>
+     <p>
+       类似于 Python 中的 Pypi，Node.js 中的 npm，Serverless Registry 正通过一种更为开发和透明的做法，繁荣 Serverless 生态。
+     </p>
+   </div>
+  </div>
+  <Picture
+      src={frameworkImage}
+      alt="Serverless Devs Registry"
+      loading="eager"
+      class="w-full lg:w-96 pt-16 pb-16 bg-theme-500 rounded-3xl"
+      format="avif"
+  />
+</div>
+
+
+

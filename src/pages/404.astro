@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+const allContents = await getCollection('docs');
+const allFaqs = allContents.filter(content=>content.slug.startsWith('faq'));
+const allVersions = allContents.filter(content=>content.slug.startsWith('versions'));
+const allLearning = allContents.filter(content=>content.slug.startsWith('learning'));
+const allCommunityTags = (await getCollection('communities')).map(item=>item.data.tag);
+
+const firstFaq = allFaqs[0];
+const firstFaqPath = firstFaq.slug;
+const firstFaqUrl = `/${firstFaqPath}`;
+
+const firstVersion = allVersions[0];
+const firstVersionPath = firstVersion.slug;
+const firstVersionUrl = `/${firstVersionPath}`;
+
+const firstCommunityTag = allCommunityTags[0];
+const firstCommunityTagUrl = `/community/${firstCommunityTag}`;
+---
+
+<div data-first-faq-url={firstFaqUrl} data-first-version-url={firstVersionUrl} data-first-community-url={firstCommunityTagUrl}></div>
+
+<script>
+    const pathname = window.location.pathname;
+
+    if (pathname.startsWith('/docs') || pathname === '/overview') {
+        window.location.replace("/docs/overview");
+    } else if (pathname.startsWith('/community')) {
+        window.location.replace(document.querySelector('[data-first-community-url]').dataset.firstCommunityUrl);
+    } else if (pathname.startsWith('/faq')) {
+        window.location.replace(document.querySelector('[data-first-faq-url]').dataset.firstFaqUrl);
+    } else if (pathname.startsWith('/learning')) {
+        window.location.replace('/learning/all');
+    } else if (pathname.startsWith('/versions')) {
+        window.location.replace(document.querySelector('[data-first-version-url]').dataset.firstVersionUrl);
+    }else {
+        window.location.replace("/");
+    }
+
+</script>

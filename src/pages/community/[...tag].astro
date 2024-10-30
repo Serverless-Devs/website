@@ -1,0 +1,44 @@
+---
+export async function getStaticPaths() {
+    const allTags = (await getCollection('communities')).map((community=>community.data.tag))
+
+    return allTags.flatMap((tag) => {
+        return [
+            {
+                params: { tag },
+            },
+        ];
+    });
+}
+
+import Layout from "../../layouts/Layout.astro";
+import CommunityCard from '../../components/community/card.astro'
+
+const {tag} = Astro.params
+
+import { getCollection } from 'astro:content';
+
+const allCommunities = await getCollection('communities');
+
+const allTags = Array.from(new Set(allCommunities.map((community=>community.data.tag))))
+---
+
+<Layout>
+    <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-col items-start gap-5">
+            <div class="flex flex-row gap-2">
+                {
+                    allTags.map((currTag) =>(
+                            <a href={`/community/${currTag}`} class=`${currTag === tag ? 'bg-theme-500' : 'bg-theme'} border border-theme-500 text-white text-sm font-bold py-2 px-4 rounded-full m-2`>#{currTag}</a>
+                    ))
+                }
+            </div>
+            <div class="grid lg:grid-cols-4 gap-8 md:grid-cols-2 grid-cols-1">
+                {
+                    allCommunities.filter((community) => community.data.tag === tag).map((community) =>(
+                            <CommunityCard title={community.data.title} img={community.data.image} url={'detail/'  + community.slug}></CommunityCard>
+                    ))
+                }
+            </div>
+    </div>
+</Layout>
+
