@@ -1,0 +1,108 @@
+---
+import blueFireIcon from "@assets/icons/blurFire.svg";
+import starIcon from "@assets/icons/star.svg";
+import { Picture } from "astro:assets";
+
+const TEMPLATE_SORTS = [{
+    title:"应用",
+    templates:[{
+        title:"cap-comfyui-board",
+        description:"基于 ComfyUI API 搭建涂鸦实时绘板。",
+        hot:"2847",
+        date:"2024.09.23"
+    },{
+        title: "fc-stable-diffusion-v3",
+        description:
+            "使用serverless devs将stable-diffusion部署",
+        hot: "31344",
+        date: "2024.09.13",
+    }, {
+        title: "fc3",
+        description: "阿里云函数计算全生命周期管理",
+        hot: "107594",
+        date: "2024.09.26",
+    }, {
+        title: "volcano-vefaas",
+        description: "火山引擎函数计算 VeFaas 核心组件",
+        hot: "47281",
+        date: "2024.09.24",
+    }, {
+        title: "init-fc-alias",
+        description: "初始fc资源",
+        hot: "8342",
+        date: "2023.01.12",
+    }, {
+        title: "use-qualifier-deploy-fc",
+        description: "使用fc部署静态资源",
+        hot: "2628",
+        date: "2023.01.12",
+    }]
+}]
+
+const ALL_TEMPLATE_SORTS = [{
+    title:"全部",
+    templates:TEMPLATE_SORTS.flatMap(item=>item.templates)
+},...TEMPLATE_SORTS]
+---
+
+<div>
+    <p class="text-sm font-bold leading-10" style="background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);background-clip: text;color: transparent;">为什么选择Devs？</p>
+    <p class="text-white text-3xl leading-10 font-bold">有成百上千的应用模版供您选择</p>
+    <div class="flex flex-row items-center gap-5 mt-5">
+        {
+            ALL_TEMPLATE_SORTS.map(sort=>(
+                    <div class="flex flex-row items-center justify-center px-4 py-1 text-xs sort">{sort.title}</div>
+            ))
+        }
+    </div>
+        {
+            ALL_TEMPLATE_SORTS.map(sort=>(
+                    <div class="grid grid-cols-3 gap-5 mt-10" data-sort-title={sort.title}>
+                        {
+                            sort.templates.map(template=>(
+                                    <div class="sortTemplate flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]" >
+                                        <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
+                                            <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <p class="text-lg font-bold templateTitle">{template.title}</p>
+                                            <p class="text-sm text-info">{template.description}</p>
+                                        </div>
+                                        <div class="flex flex-row justify-between items-center">
+                                            <div class="flex flex-row gap-1 items-center text-white">
+                                                <Picture class="rounded-full" src={blueFireIcon} alt="blueFireIcon"/>
+                                                <span class="text-sm font-light">{template.hot}</span>
+                                            </div>
+                                            <div class="text-info text-sm">{template.date}</div>
+                                        </div>
+                                    </div>
+                            ))
+                        }
+                    </div>
+            ))
+        }
+</div>
+
+<style>
+    .selectedSort{
+        opacity: 1;
+        border-radius: 24px;
+        background: rgba(244, 244, 246, 1);
+        color:rgba(18, 19, 22, 1);
+    }
+
+    .sort{
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 0.8px solid rgba(179, 182, 193, 1);
+        color:white;
+    }
+
+    .sortTemplate:hover .templateTitle{
+        background:linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);
+        background-clip: text;
+        color: transparent;
+    }
+
+
+</style>

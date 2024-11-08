@@ -1,0 +1,12 @@
+---
+const clients = ["https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png"];
+---
+
+<div>
+    <p>They trust us</p>
+    {
+        clients.map(client => (
+            <img class="w-20" src={client} />
+        ))
+    }
+</div>

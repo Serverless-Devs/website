@@ -1,7 +1,7 @@
 ---
 import { SEO } from "astro-seo";
-import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
+import Footer from "../components/home/Footer.astro";
+import Navbar from "../components/home/Navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
 import "../style/global.css";
@@ -97,6 +97,10 @@ const makeTitle = title
 		<style is:global>
 			img {
 				content-visibility: auto;
+			}
+
+			body{
+				background: #121316;
 			}
 		</style>
 	</body>
