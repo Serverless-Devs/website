@@ -1,0 +1,15 @@
+---
+
+let {
+    href,
+    style,
+    onlyIcon,
+    id
+} = Astro.props;
+
+---
+
+<a href={href} target="_blank" id={id} style={style}
+   class={`flex text-white items-center justify-center bg-white/10 border-[0.8px] border-[#b3b6c1] ${onlyIcon ? 'rounded-full h-full aspect-square' : 'rounded-[32px] h-full px-8 py-2'}`}>
+    <slot/>
+</a>
