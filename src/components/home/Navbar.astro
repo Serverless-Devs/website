@@ -29,9 +29,8 @@ const menuItems = [
 
 <Container>
 	<header class="flex flex-col lg:flex-row justify-start lg:gap-20 items-center my-5">
-		<Astronav>
 			<div class="flex flex-row gap-10 justify-between w-full px-5">
-				<div class="flex flex-1 lg:w-auto items-center justify-between ">
+				<div class="flex flex-1 lg:w-auto items-center justify-center md:justify-start">
 					<a href="/public" class="w-14">
 						<Picture
 							src={logoImage}
@@ -42,12 +41,8 @@ const menuItems = [
 							format="avif"
 						/>
 					</a>
-					<div class="block lg:hidden">
-						<MenuIcon class="w-4 h-4 text-gray-800" />
-					</div>
 				</div>
-				<MenuItems class="flex-1 w-full lg:w-auto mt-2 lg:flex lg:mt-0 flex flex-row justify-center">
-					<ul class="flex flex-col lg:flex-row lg:gap-3 pl-10 pr-10 pt-5 pb-5 lg:p-0 backdrop-blur items-center">
+					<ul class="hidden flex-row gap-3 pl-10 pr-10 backdrop-blur items-center md:flex lg:flex">
 						{
 							menuItems.map((item, index) => (
 								<>
@@ -66,12 +61,11 @@ const menuItems = [
 							))
 						}
 					</ul>
-				</MenuItems>
-				<div class="flex-1 flex flex-row items-center justify-end gap-4">
+
+				<div class="flex-1 flex-row items-center justify-end gap-4 hidden lg:flex">
 					<Search labels={{'search.label':'搜索文档'}}></Search>
 					<SmoothButton href="https://github.com/Serverless-Devs/Serverless-Devs">GITHUB</SmoothButton>
 				</div>
 			</div>
-		</Astronav>
 	</header>
 </Container>
