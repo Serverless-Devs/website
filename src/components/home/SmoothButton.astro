@@ -10,6 +10,26 @@ let {
 ---
 
 <a href={href} target="_blank" id={id} style={style}
-   class={`flex text-white items-center justify-center bg-white/10 border-[0.8px] border-[#b3b6c1] ${onlyIcon ? 'rounded-full h-full aspect-square' : 'rounded-[32px] h-full px-8 py-2'}`}>
+   class={`inline-flex text-white items-center justify-center bg-white/10 border-[0.8px] border-[#b3b6c1] ${onlyIcon ? 'rounded-full h-full aspect-square' : 'rounded-[32px] h-full px-8 py-2'}`}>
     <slot/>
+    <img class="goIcon" src="/src/assets/icons/go.svg" alt=""/>
 </a>
+
+
+<style>
+
+    a{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    a .goIcon{
+        display: none;
+    }
+
+    a:hover .goIcon{
+        display: block;
+    }
+</style>
