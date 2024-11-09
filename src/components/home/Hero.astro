@@ -80,7 +80,20 @@ import startIcon from "../../assets/icons/start.svg";
 			requestAnimationFrame(animate);
 		}
 		animate();
+
+		//该部分离开屏幕外后暂停，以优化性能体验
+		const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					bdColor.resume();
+				} else {
+					bdColor.pause();
+				}
+			});
+		});
+		observer.observe(animateBackground);
 	})
+
 
 	window.onresize = () => {
 		bdColor.setSize(animateBackground.getBoundingClientRect().width,animateBackground.getBoundingClientRect().height)
