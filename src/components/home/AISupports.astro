@@ -1,14 +1,15 @@
 ---
 import { Picture } from "astro:assets";
+import Container from "../Container.astro";
 
 ---
-
-<div class="AISupport flex flex-col mb-20">
-    <img src="/src/assets/home/AISupportPart1.svg" alt=""/>
-    <img class="ml-[20%]" src="/src/assets/home/AISupportPart2.svg" alt=""/>
-    <img class="ml-[20%]" src="/src/assets/home/AISupportPart3.svg" alt=""/>
-</div>
-
+<Container>
+    <div class="AISupport flex flex-col mb-20">
+        <img src="/src/assets/home/AISupportPart1.svg" alt=""/>
+        <img class="ml-[20%]" src="/src/assets/home/AISupportPart2.svg" alt=""/>
+        <img class="ml-[20%]" src="/src/assets/home/AISupportPart3.svg" alt=""/>
+    </div>
+</Container>
 
 <style>
     .AISupport{

@@ -2,6 +2,7 @@
 import blueFireIcon from "@assets/icons/blurFire.svg";
 import starIcon from "@assets/icons/star.svg";
 import { Picture } from "astro:assets";
+import Container from "../Container.astro";
 
 const TEMPLATE_SORTS = [{
     title:"应用",
@@ -44,44 +45,45 @@ const ALL_TEMPLATE_SORTS = [{
     templates:TEMPLATE_SORTS.flatMap(item=>item.templates)
 },...TEMPLATE_SORTS]
 ---
-
-<div class="px-36">
-    <p class="text-sm font-bold leading-10" style="background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);background-clip: text;color: transparent;">为什么选择Devs？</p>
-    <p class="text-white text-3xl leading-10 font-bold">有成百上千的应用模版供您选择</p>
-    <div class="flex flex-row items-center gap-5 mt-5">
-        {
-            ALL_TEMPLATE_SORTS.map(sort=>(
-                    <div class="flex flex-row items-center justify-center px-4 py-1 text-xs sort">{sort.title}</div>
-            ))
-        }
-    </div>
-        {
-            ALL_TEMPLATE_SORTS.map(sort=>(
-                    <div class="grid grid-cols-3 gap-5 mt-10" data-sort-title={sort.title}>
-                        {
-                            sort.templates.map(template=>(
-                                    <div class="sortTemplate flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]" >
-                                        <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
-                                            <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
-                                        </div>
-                                        <div class="flex flex-col">
-                                            <p class="text-lg font-bold templateTitle">{template.title}</p>
-                                            <p class="text-sm text-info">{template.description}</p>
-                                        </div>
-                                        <div class="flex flex-row justify-between items-center">
-                                            <div class="flex flex-row gap-1 items-center text-white">
-                                                <Picture class="rounded-full" src={blueFireIcon} alt="blueFireIcon"/>
-                                                <span class="text-sm font-light">{template.hot}</span>
+<Container>
+    <div class="px-36">
+        <p class="text-sm font-bold leading-10" style="background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);background-clip: text;color: transparent;">为什么选择Devs？</p>
+        <p class="text-white text-3xl leading-10 font-bold">有成百上千的应用模版供您选择</p>
+        <div class="flex flex-row items-center gap-5 mt-5">
+            {
+                ALL_TEMPLATE_SORTS.map(sort=>(
+                        <div class="flex flex-row items-center justify-center px-4 py-1 text-xs sort">{sort.title}</div>
+                ))
+            }
+        </div>
+            {
+                ALL_TEMPLATE_SORTS.map(sort=>(
+                        <div class="grid grid-cols-3 gap-5 mt-10" data-sort-title={sort.title}>
+                            {
+                                sort.templates.map(template=>(
+                                        <div class="sortTemplate flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]" >
+                                            <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
+                                                <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
                                             </div>
-                                            <div class="text-info text-sm">{template.date}</div>
+                                            <div class="flex flex-col">
+                                                <p class="text-lg font-bold templateTitle">{template.title}</p>
+                                                <p class="text-sm text-info">{template.description}</p>
+                                            </div>
+                                            <div class="flex flex-row justify-between items-center">
+                                                <div class="flex flex-row gap-1 items-center text-white">
+                                                    <Picture class="rounded-full" src={blueFireIcon} alt="blueFireIcon"/>
+                                                    <span class="text-sm font-light">{template.hot}</span>
+                                                </div>
+                                                <div class="text-info text-sm">{template.date}</div>
+                                            </div>
                                         </div>
-                                    </div>
-                            ))
-                        }
-                    </div>
-            ))
-        }
-</div>
+                                ))
+                            }
+                        </div>
+                ))
+            }
+    </div>
+</Container>
 
 <style>
     .selectedSort{

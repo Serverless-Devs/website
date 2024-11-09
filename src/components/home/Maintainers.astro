@@ -5,6 +5,7 @@ import placeholderAvatar2 from '../../assets/icons/placeholderAvatar2.svg'
 import placeholderAvatar3 from '../../assets/icons/placeholderAvatar3.svg'
 import placeholderAvatar4 from '../../assets/icons/placeholderAvatar4.svg'
 import { Picture } from "astro:assets";
+import Container from "../Container.astro";
 
 const maintainers = [{
   color:"#b3b6c1"
@@ -56,36 +57,37 @@ const maintainers = [{
   color:"#b3b6c1"
 }]
 ---
+<Container>
+  <div class="mt-24 flex flex-row items-center justify-between pl-20 pr-10 py-11 bg-[#1e1f24] rounded-2xl">
+    <div class="flex flex-col gap-5 text-white">
+      <p class="text-sm text-info">MEMBERS</p>
+      <h2 class="text-slate-500 font-bold text-4xl">iServerless<br>开发者社区</h2>
+      <a href="#" class="text-black text-sm">
+        <p class="bg-white rounded-3xl mt-24 py-4 px-5 text-center">加入【coming soon】</p>
+      </a>
+    </div>
+    <div class="grid grid-cols-6 flex-wrap gap-3 justify-center">
+      {
+        maintainers.map(maintainer=>(
+            <div class="flex flex-col items-center gap-3">
+              {
+                  maintainer.avatar ?? maintainer.icon?(
+                      <Picture
+                          class="rounded-xl"
+                          src={maintainer.avatar ?? maintainer.icon}
+                          alt="Serverless Devs LOGO"
+                          width="100"
+                          height="100"
+                          loading="eager"
+                      />
+                  ):(
+                      <div class="rounded-xl w-[100px] h-[100px]" style={`background:${maintainer.color}`}></div>
+                  )
+              }
+            </div>
+        ))
+      }
 
-<div class="mt-24 flex flex-row items-center justify-between pl-20 pr-10 py-11 bg-[#1e1f24] rounded-2xl">
-  <div class="flex flex-col gap-5 text-white">
-    <p class="text-sm text-info">MEMBERS</p>
-    <h2 class="text-slate-500 font-bold text-4xl">iServerless<br>开发者社区</h2>
-    <a href="#" class="text-black text-sm">
-      <p class="bg-white rounded-3xl mt-24 py-4 px-5 text-center">加入【coming soon】</p>
-    </a>
+    </div>
   </div>
-  <div class="grid grid-cols-6 flex-wrap gap-3 justify-center">
-    {
-      maintainers.map(maintainer=>(
-          <div class="flex flex-col items-center gap-3">
-            {
-                maintainer.avatar ?? maintainer.icon?(
-                    <Picture
-                        class="rounded-xl"
-                        src={maintainer.avatar ?? maintainer.icon}
-                        alt="Serverless Devs LOGO"
-                        width="100"
-                        height="100"
-                        loading="eager"
-                    />
-                ):(
-                    <div class="rounded-xl w-[100px] h-[100px]" style={`background:${maintainer.color}`}></div>
-                )
-            }
-          </div>
-      ))
-    }
-
-  </div>
-</div>
+</Container>

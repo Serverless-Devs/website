@@ -1,5 +1,5 @@
 ---
-import Container from "@components/container.astro";
+import Container from "../components/Container.astro";
 import Features from "../components/home/Features.astro";
 import Hero from "../components/home/Hero.astro";
 import Maintainers from "../components/home/Maintainers.astro";
@@ -7,15 +7,14 @@ import Layout from "@layouts/Layout.astro";
 import TrustClient from "../components/home/TrustClient.astro";
 import Templates from "../components/home/Templates.astro";
 import AISupports from "../components/home/AISupports.astro";
+import BuildForms from "../components/home/BuildForms.astro";
 ---
 
 <Layout title="">
-    <Container>
         <Hero/>
         <TrustClient></TrustClient>
         <AISupports></AISupports>
-        <Features/>
         <Templates></Templates>
+        <BuildForms></BuildForms>
         <Maintainers/>
-    </Container>
 </Layout>

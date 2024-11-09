@@ -1,4 +1,5 @@
 ---
+import Container from "../Container.astro";
 const clients = [
     "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
     "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
@@ -8,15 +9,16 @@ const clients = [
     "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png"
 ];
 ---
+<Container>
+    <div class="flex flex-col items-center gap-11 py-24 overflow-hidden">
+        <p class="text-white ">They trust us</p>
+        <div class="w-full flex flex-row justify-around gap-10">
+            {
+                clients.map(client => (
+                        <img class="w-28" src={client} />
+                ))
+            }
+        </div>
 
-<div class="flex flex-col items-center gap-11 py-24 overflow-hidden">
-    <p class="text-white ">They trust us</p>
-    <div class="w-full flex flex-row justify-around gap-10">
-        {
-            clients.map(client => (
-                    <img class="w-28" src={client} />
-            ))
-        }
     </div>
-
-</div>
+</Container>
