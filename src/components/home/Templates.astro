@@ -54,14 +54,14 @@ const ALL_TEMPLATE_SORTS = [{
 ---
 <Container>
     <div class="px-10 sm:px-16 lg:px-36">
-        <p class="text-sm font-bold leading-10"
+        <p class="text-sm font-medium leading-10"
            style="background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);background-clip: text;color: transparent;">
             为什么选择Devs？</p>
-        <p class="text-white text-3xl leading-10 font-bold">有成百上千的应用模版供您选择</p>
+        <p class="text-white text-3xl leading-10 font-medium tracking-widest">有成百上千的应用模版供您选择</p>
         <div class="flex flex-row items-center gap-5 mt-5">
             {
                 ALL_TEMPLATE_SORTS.map(sort => (
-                        <a class={`cursor-pointer templateSort flex flex-row items-center justify-center px-4 py-1 text-sm sort border border-[#4a4c57] hover:bg-[#1e1f22] ${sort.title == '全部' ? 'selectedSort' : ''}`}
+                        <a class={`cursor-pointer templateSort flex flex-row items-center justify-center px-4 py-1 text-sm sort border border-[#4a4c57] hover:bg-white hover:text-black ${sort.title == '全部' ? 'selectedSort' : ''}`}
                            data-sort-title={sort.title}>{sort.title}</a>
                 ))
             }
@@ -119,8 +119,8 @@ const ALL_TEMPLATE_SORTS = [{
     .selectedSort {
         opacity: 1;
         border-radius: 24px;
-        background: #1e1f22;
-        color: rgba(18, 19, 22, 1);
+        background: white;
+        color: rgba(18, 19, 22, 1) !important;
     }
 
     .sort {

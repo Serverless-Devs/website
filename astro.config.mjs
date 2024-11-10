@@ -67,8 +67,6 @@ export default defineConfig({
           },
         }),
       ],
-      // locales,
-      // customCss: ['./src/style/global.css','./src/style/fonts.css'],
     }),
     tailwind({ applyBaseStyles: false }),
     icon({
