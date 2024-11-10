@@ -1,0 +1,33 @@
+---
+import {Picture} from "astro:assets";
+import blueFireIcon from "@assets/icons/blurFire.svg";
+import starIcon from "@assets/icons/star.svg";
+
+const {url, title, description, date, hot} = Astro.props;
+---
+
+<div class="card flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]">
+    <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
+        <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
+    </div>
+    <div class="flex flex-col">
+        <a class="text-lg font-bold title"
+           href={url}>{title}</a>
+        <p class="text-sm text-info">{description}</p>
+    </div>
+    <div class="flex flex-row justify-between items-center">
+        <div class="flex flex-row gap-1 items-center text-white">
+            <Picture class="rounded-full" src={blueFireIcon} alt="blueFireIcon"/>
+            <span class="text-sm font-light">{hot}</span>
+        </div>
+        <div class="text-info text-sm">{date}</div>
+    </div>
+</div>
+
+<style>
+    .card:hover .title {
+        background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);
+        background-clip: text;
+        color: transparent;
+    }
+</style>
