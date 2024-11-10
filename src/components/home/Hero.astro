@@ -3,6 +3,7 @@ import {Picture} from "astro:assets";
 import nextIcon from "../../assets/icons/next.svg";
 import startIcon from "../../assets/icons/start.svg";
 import Container from "../Container.astro";
+import SmoothButton from "./SmoothButton.astro";
 ---
 <Container>
     <main>
@@ -38,7 +39,7 @@ import Container from "../Container.astro";
 
             <!-- 操作栏 -->
             <div class="mt-6 flex flex-row gap-3 text-center text-sm z-10">
-                <a href="/docs/getting-started" class="bg-white px-6 py-3 flex flex-row items-center gap-2 rounded-3xl">
+                <SmoothButton href="/docs/getting-started" mode="soild" style="padding: 1rem 2rem;">
                     <Picture
                             src={startIcon}
                             alt="startIcon"
@@ -47,11 +48,8 @@ import Container from "../Container.astro";
                     />
 
                     快速开始
-                </a>
-                <a href="https://registry.serverless-devs.com/"
-                   class="bg-none border-[#b3b6c1] border-[0.8px] text-white px-6 py-3 flex flex-row items-center gap-2 rounded-3xl">
-                    访问 Registry
-                </a>
+                </SmoothButton>
+                <SmoothButton href="https://registry.serverless-devs.com/">访问 Registry</SmoothButton>
             </div>
         </div>
     </main>
