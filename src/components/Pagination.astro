@@ -1,0 +1,18 @@
+---
+const {currentPage, totalPage, baseUrl} = Astro.props;
+---
+
+
+<div class="flex flex-row gap-3 justify-center">
+    {
+        new Array(totalPage).fill(null).map((_, index) => {
+            return (
+                    <a href={`${baseUrl}/${index == 0 ? '' : index + 1}`}
+                       class={`${currentPage === index + 1 ? 'bg-[#1e1f22]' : ''} text-white border border-[#4a4c57] rounded-xl hover:bg-[#1e1f22] text-center aspect-square w-12 leading-[48px]`}>
+                        {index + 1}
+                    </a>
+            )
+        })
+    }
+</div>
+
