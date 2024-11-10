@@ -1,57 +1,55 @@
 ---
-import type {GetStaticPathsOptions} from "astro";
-const {page} = Astro.props;
+import type {Page, GetStaticPathsOptions} from "astro";
+const {
+    page
+}: {
+    page: Page
+} = Astro.props;
 import Layout from "../../layouts/Layout.astro";
 import LineCard from "../../components/LineCard.astro";
-
-const products = [{
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}, {
-    title: 'start-rag-on-flow',
-    date: '2024-08-30',
-    hot: "31344",
-    description: '基于流程构建 RAG 应用',
-    url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-}]
+import Pagination from "../../components/Pagination.astro";
 
 export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
     const products = [{
         title: 'start-rag-on-flow',
         date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
+        description: '基于流程构建 RAG 应用',
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: 'start-rag-on-flow',
+        date: '2024-08-30',
+        hot: "31344",
         description: '基于流程构建 RAG 应用',
         url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
     }]
@@ -65,10 +63,10 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
 <Layout>
     <div class="max-w-screen-xl m-auto mt-24 px-5 flex flex-row items-start gap-5">
         <div class="flex flex-col gap-5 w-full">
-            <div class="flex flex-row w-full">
+            <div class="flex flex-row w-full mb-14">
                 <div class="gap-8 grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 w-full">
                     {
-                        products.map(template => (
+                        page.data.map(template => (
                                 <LineCard
                                         title={template.title}
                                         url={template.url}
@@ -80,6 +78,9 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
                     }
                 </div>
             </div>
+
+            <Pagination currentPage={page.currentPage} pageSize={page.size} totalPage={page.lastPage}
+                        baseUrl="/aiMall"></Pagination>
         </div>
     </div>
 </Layout>
