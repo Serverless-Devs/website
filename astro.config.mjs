@@ -1,42 +1,21 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import partytown from "@astrojs/partytown";
-import preact from "@astrojs/preact";
 import { autoImportComponents } from "@serverless-cd/goat-ui/src/utils";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-// import compress from 'astro-compress';
-import rehypeExternalLinks from "rehype-external-links";
-
-import {
-  addPrefixImageLink,
-  remarkRemoveMdLinks,
-  remarkRemovePlainLanguageCode,
-  remarkRemoveRepeatHeader,
-  setLinkReferrer,
-} from "./src/utils/frontmatter.mjs";
-import { ANALYTICS, SIDEBAR, SITE } from "./src/utils/config.ts";
-import { starlightAsides } from "./node_modules/@astrojs/starlight/integrations/asides";
+import { SIDEBAR, SITE } from "./src/utils/config.ts";
 import topLevelAwait from "vite-plugin-top-level-await";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
-
-const whenExternalScripts = (items = []) =>
-  ANALYTICS.vendors.googleAnalytics.id &&
-  ANALYTICS.vendors.googleAnalytics.partytown
-    ? Array.isArray(items)
-      ? items.map((item) => item())
-      : [items()]
-    : [];
 
 // https://astro.build/config
 export default defineConfig({
   site: process.env.DEPLOY_SITE || SITE.site,
   base: SITE.base,
+  //设置处理后斜杠的策略
   trailingSlash: SITE.trailingSlash,
   image: {
     domain: ["img.alicdn"],
   },
-
   integrations: [
     autoImportComponents(),
     starlight({
@@ -46,7 +25,9 @@ export default defineConfig({
         src: "./src/assets/logo.png",
         replacesTitle: true,
       },
+      //自定义组件
       components: {
+        //重写主题提供组件，实现默认深色主题
         ThemeProvider: "./src/components/ThemeProvider.astro",
       },
       disable404Route: true,
@@ -59,6 +40,7 @@ export default defineConfig({
       editLink: {
         baseUrl: SITE.websiteGithubUrl,
       },
+      //多路侧边栏设置
       sidebar: SIDEBAR,
       plugins: [
         starlightUtils({
@@ -74,32 +56,7 @@ export default defineConfig({
       "ant-design": ["github-filled"],
       basil: ["document-outline"],
     }),
-    preact({ compat: true }),
-    ...whenExternalScripts(() =>
-      partytown({
-        config: { forward: ["dataLayer.push"] },
-      }),
-    ),
   ],
-  markdown: {
-    rehypePlugins: [
-      // 在这里添加 rehype-external-links 插件配置
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-        },
-      ],
-    ],
-    remarkPlugins: [
-      remarkRemoveMdLinks,
-      remarkRemovePlainLanguageCode,
-      remarkRemoveRepeatHeader,
-      addPrefixImageLink,
-      starlightAsides,
-      setLinkReferrer,
-    ],
-  },
   vite: {
     build: {
       target: "chrome68",

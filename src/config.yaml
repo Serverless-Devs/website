@@ -4,20 +4,8 @@ site:
   base: "/"
   trailingSlash: "ignore"
   websiteGithubUrl: "https://github.com/spring-cloud-alibaba-group/spring-cloud-alibaba-group.github.io/blob/main"
-  githubUrl: "https://github.com/alibaba/spring-cloud-alibaba"
+  githubUrl: "https://github.com/Serverless-Devs/Serverless-Devs"
   logoUrl: "https://img.alicdn.com/imgextra/i4/O1CN01nAxx821DsAIk5F5uC_!!6000000000271-2-tps-667-370.png"
-
-analytics:
-  vendors:
-    googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
-    baiduAnalytics:
-      id:
-      verification: code-wzq5sw7io3
-    aesAnalytics:
-      pid: e7WQkK
-    clarityAlalytics:
-      id: l4jzj6wbhh
 
 # Default SEO metadata
 metadata:
