@@ -61,13 +61,14 @@ const ALL_TEMPLATE_SORTS = [{
         <div class="flex flex-row items-center gap-5 mt-5">
             {
                 ALL_TEMPLATE_SORTS.map(sort => (
-                        <div class="flex flex-row items-center justify-center px-4 py-1 text-xs sort">{sort.title}</div>
+                        <a class={`cursor-pointer templateSort flex flex-row items-center justify-center px-4 py-1 text-sm sort border border-[#4a4c57] hover:bg-[#1e1f22] ${sort.title == '全部' ? 'selectedSort' : ''}`}
+                           data-sort-title={sort.title}>{sort.title}</a>
                 ))
             }
         </div>
         {
             ALL_TEMPLATE_SORTS.map(sort => (
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10"
+                    <div class="templates grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5"
                          data-sort-title={sort.title}>
                         {
                             sort.templates.map(template => (
@@ -86,26 +87,44 @@ const ALL_TEMPLATE_SORTS = [{
     </div>
 </Container>
 
+<script>
+
+    document.querySelectorAll('.templateSort').forEach(item => {
+        item.addEventListener('click', function () {
+            const selectedSort = item.getAttribute('data-sort-title');
+
+            document.querySelectorAll('.templateSort').forEach(sortItem => {
+                sortItem.classList.remove('selectedSort');
+            })
+
+            item.classList.add('selectedSort');
+
+            if (selectedSort === '全部') {
+                document.querySelectorAll('.templates[data-sort-title]').forEach(sortItem => {
+                    sortItem.style.display = 'grid';
+                })
+            } else {
+                document.querySelectorAll(`.templates[data-sort-title]`).forEach(sortItem => {
+                    const sortTitle = sortItem.getAttribute('data-sort-title');
+                    sortItem.style.display = selectedSort === sortTitle ? 'grid' : 'none';
+                })
+            }
+
+        })
+    })
+
+</script>
+
 <style>
     .selectedSort {
         opacity: 1;
         border-radius: 24px;
-        background: rgba(244, 244, 246, 1);
+        background: #1e1f22;
         color: rgba(18, 19, 22, 1);
     }
 
     .sort {
         border-radius: 32px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 0.8px solid rgba(179, 182, 193, 1);
         color: white;
     }
-
-    .sortTemplate:hover .templateTitle {
-        background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);
-        background-clip: text;
-        color: transparent;
-    }
-
-
 </style>
