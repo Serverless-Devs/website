@@ -89,7 +89,7 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
         </div>
 
         <!--侧边栏-->
-        <div class="flex flex-col w-5/12 px-10 items-start gap-12 mt-[35px]">
+        <div class="hidden lg:flex flex-col w-5/12 px-10 items-start gap-12 mt-[35px]">
             {
                 learningChannels.map(channel => (
                         <div class="w-full flex flex-col gap-5">
