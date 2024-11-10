@@ -46,6 +46,9 @@ export default defineConfig({
         src: "./src/assets/logo.png",
         replacesTitle: true,
       },
+      components: {
+        ThemeProvider: "./src/components/ThemeProvider.astro",
+      },
       disable404Route: true,
       social: {
         github: "https://github.com/Serverless-Devs/Serverless-Devs",
