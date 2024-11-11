@@ -1,0 +1,130 @@
+---
+import blueFireIcon from "@assets/icons/blurFire.svg";
+import starIcon from "@assets/icons/star.svg";
+import {Picture} from "astro:assets";
+import Container from "../Container.astro";
+import LineCard from "../LineCard.astro";
+
+const TEMPLATE_SORTS = [{
+    title: "应用",
+    templates: [{
+        title: "cap-comfyui-board",
+        description: "基于 ComfyUI API 搭建涂鸦实时绘板。",
+        hot: "2847",
+        date: "2024.09.23",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: "fc-stable-diffusion-v3",
+        description:
+            "使用serverless devs将stable-diffusion部署",
+        hot: "31344",
+        date: "2024.09.13",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: "fc3",
+        description: "阿里云函数计算全生命周期管理",
+        hot: "107594",
+        date: "2024.09.26",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: "volcano-vefaas",
+        description: "火山引擎函数计算 VeFaas 核心组件",
+        hot: "47281",
+        date: "2024.09.24",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: "init-fc-alias",
+        description: "初始fc资源",
+        hot: "8342",
+        date: "2023.01.12",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }, {
+        title: "use-qualifier-deploy-fc",
+        description: "使用fc部署静态资源",
+        hot: "2628",
+        date: "2023.01.12",
+        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
+    }]
+}]
+
+const ALL_TEMPLATE_SORTS = [{
+    title: "全部",
+    templates: TEMPLATE_SORTS.flatMap(item => item.templates)
+}, ...TEMPLATE_SORTS]
+---
+<Container>
+    <div class="px-10 sm:px-16 lg:px-36">
+        <p class="text-sm font-medium leading-10"
+           style="background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);background-clip: text;color: transparent;">
+            为什么选择Devs？</p>
+        <p class="text-white text-3xl leading-10 font-medium tracking-widest">有成百上千的应用模版供您选择</p>
+        <div class="flex flex-row items-center gap-5 mt-5">
+            {
+                ALL_TEMPLATE_SORTS.map(sort => (
+                        <a class={`cursor-pointer templateSort flex flex-row items-center justify-center px-4 py-1 text-sm sort border border-[#4a4c57] hover:bg-white hover:text-black ${sort.title == '全部' ? 'selectedSort' : ''}`}
+                           data-sort-title={sort.title}>{sort.title}</a>
+                ))
+            }
+        </div>
+        {
+            ALL_TEMPLATE_SORTS.map(sort => (
+                    <div class="templates grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5"
+                         data-sort-title={sort.title}>
+                        {
+                            sort.templates.map(template => (
+                                    <LineCard
+                                            title={template.title}
+                                            url={template.url}
+                                            description={template.description}
+                                            date={template.date}
+                                            hot={template.hot}>
+                                    </LineCard>
+                            ))
+                        }
+                    </div>
+            ))
+        }
+    </div>
+</Container>
+
+<script>
+
+    document.querySelectorAll('.templateSort').forEach(item => {
+        item.addEventListener('click', function () {
+            const selectedSort = item.getAttribute('data-sort-title');
+
+            document.querySelectorAll('.templateSort').forEach(sortItem => {
+                sortItem.classList.remove('selectedSort');
+            })
+
+            item.classList.add('selectedSort');
+
+            if (selectedSort === '全部') {
+                document.querySelectorAll('.templates[data-sort-title]').forEach(sortItem => {
+                    sortItem.style.display = 'grid';
+                })
+            } else {
+                document.querySelectorAll(`.templates[data-sort-title]`).forEach(sortItem => {
+                    const sortTitle = sortItem.getAttribute('data-sort-title');
+                    sortItem.style.display = selectedSort === sortTitle ? 'grid' : 'none';
+                })
+            }
+
+        })
+    })
+
+</script>
+
+<style>
+    .selectedSort {
+        opacity: 1;
+        border-radius: 24px;
+        background: white;
+        color: rgba(18, 19, 22, 1) !important;
+    }
+
+    .sort {
+        border-radius: 32px;
+        color: white;
+    }
+</style>

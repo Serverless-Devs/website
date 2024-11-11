@@ -1,0 +1,21 @@
+---
+import { Picture } from "astro:assets";
+import Container from "../Container.astro";
+
+---
+<Container>
+    <div class="AISupport flex flex-col mb-20">
+        <img src="/src/assets/home/AISupport/part1.svg" alt=""/>
+        <img class="ml-[20%]" src="/src/assets/home/AISupport/part2.svg" alt=""/>
+        <img class="ml-[20%]" src="/src/assets/home/AISupport/part3.svg" alt=""/>
+    </div>
+</Container>
+
+<style>
+    .AISupport{
+        width: 100%;
+        background-image: url("/src/assets/home/AISupport/background.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+</style>

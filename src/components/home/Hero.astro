@@ -1,0 +1,146 @@
+---
+import {Picture} from "astro:assets";
+import nextIcon from "../../assets/icons/next.svg";
+import startIcon from "../../assets/icons/start.svg";
+import Container from "../Container.astro";
+import SmoothButton from "./SmoothButton.astro";
+---
+<Container>
+    <main>
+        <div class="w-full aspect-[2/1] mx-auto text-center flex flex-col justify-center gap-1 md:gap-5 items-center overflow-hidden relative top-0">
+            <div class="hero-background"></div>
+
+            <!-- 热门模板 -->
+            <a href="https://registry.serverless-devs.com/"
+               class="hidden md:flex bg-white bg-opacity-20 opacity-80 border-[#9295a5] border-[0.8px] px-3 py-2 w-fit rounded-3xl text-center flex-row items-center gap-3 z-10">
+                <div class="text-center text-white rounded-3xl text-xs px-5 py-2"
+                     style="background:linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%)">
+                    HOT !
+                </div>
+                <p class="text-white text-xs">stable-diffusion,comfyui,cosyvoice,ollama 等应用模版上架</p>
+                <Picture
+                        src={nextIcon}
+                        alt="nextIcon"
+                        loading="eager"
+                        format="avif"
+                />
+            </a>
+
+            <!-- 大标题 -->
+            <h1
+                    class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white text-center z-10 !leading-snug">
+                一站式 AI WEB 函数<br>应用开发部署平台
+            </h1>
+
+            <!-- 详细描述 -->
+            <p class="hidden sm:block text-sm md:text-lg max-w-[85%] font-thin mt-4 text-white text-center z-10">
+                Serverless + AI 应用开发的精彩组合， 帮助 AI 应用开发者实现从idea 到商业落地的一站式服务，是众多企业的选择。
+            </p>
+
+            <!-- 操作栏 -->
+            <div class="mt-6 flex flex-row gap-3 text-center text-sm z-10">
+                <SmoothButton href="/docs/getting-started" mode="soild" style="padding: 1rem 2rem;">
+                    <Picture
+                            src={startIcon}
+                            alt="startIcon"
+                            loading="eager"
+                            format="avif"
+                    />
+
+                    快速开始
+                </SmoothButton>
+                <SmoothButton href="https://registry.serverless-devs.com/">访问 Registry</SmoothButton>
+            </div>
+        </div>
+    </main>
+</Container>
+
+
+<script>
+    import {BreathingColor} from '@b-design/color';
+
+    let animateBackground, bdColor;
+    const config =
+        {
+            "dpr": 0.5,
+            "background": "6483ff",
+            "palette": [
+                "ffffff",
+                "6218FF",
+                "3400FA",
+                "9968FF",
+                "1A79FF"
+            ],
+            "offsets": [1.02, 1.5, 1.05, -0.95, -1.75, 0.27, 0.99, -1.5, 0.95, 0.54],
+            "twist": [2, -0.5, 0.24, 5.7, 0.68, 0.15, 1.5, 1, 0.07, 0.04],
+            "symbolColor": "#6483FF"
+        }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        animateBackground = document.querySelector('.hero-background');
+
+        bdColor = new BreathingColor({
+            config: config,
+            container: animateBackground,
+            initWidth: animateBackground.getBoundingClientRect().width,
+            initHeight: animateBackground.getBoundingClientRect().height
+        });
+
+        bdColor.init();
+
+        const animate = () => {
+            bdColor.update()
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        //该部分离开屏幕外后暂停，以优化性能体验
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    bdColor.resume();
+                } else {
+                    bdColor.pause();
+                }
+            });
+        });
+        observer.observe(animateBackground);
+    })
+
+    function debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    const resetBgColorSize = debounce(() => {
+        bdColor.resume();
+        bdColor.setSize(animateBackground.getBoundingClientRect().width, animateBackground.getBoundingClientRect().height)
+    }, 200)
+
+
+    window.onresize = () => {
+        bdColor.pause();
+        resetBgColorSize();
+    };
+</script>
+
+
+<style>
+    .hero-background {
+        position: absolute;
+        z-index: -10000;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 100%;
+
+        background: linear-gradient(180deg, rgba(18, 19, 22, 1) 0%, rgba(18, 19, 22, 0) 100%),
+        linear-gradient(135deg, rgba(26, 121, 255, 1) 0%, rgba(155, 106, 255, 1) 100%);
+    }
+</style>

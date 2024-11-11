@@ -3,14 +3,15 @@ title: Yaml 规范
 ---
 # Schema
 
-| 参数名      | 必填  | 类型   | 参数描述                                                                                                                                                                           |
-| ----------- | ----- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| region      | True  | Enum   | 地域                                                                                                                                                                               |
-| name        | True  | String | 工作流流程名字                                                                                                                                                                     |
-| definition  | True  | String | Cloud Flow Definition 本地路径                                                                                                                                                     |
-| description | False | String | 工作流流程描述                                                                                                                                                                     |
-| type        | False | Enum   | 创建流程的类型，取值：FDL                                                                                                                                                          |
-| roleArn     | False | String | 可选参数，流程执行依赖的授权角色资源描述符信息。用于在执行流程时，Serverless 工作流服务扮演该角色（AssumeRole）操作相关的流程资源。格式为 `acs:ram:${region}:${accountID}:${role}` |
+| 参数名           | 必填  | 类型     | 参数描述                                                                                                                     |
+|---------------| ----- |--------|--------------------------------------------------------------------------------------------------------------------------|
+| region        | True  | Enum   | 地域                                                                                                                       |
+| name          | True  | String | 工作流流程名字                                                                                                                  |
+| definition    | True  | String | Cloud Flow Definition 本地路径                                                                                               |
+| description   | False | String | 工作流流程描述                                                                                                                  |
+| type          | False | Enum   | 创建流程的类型，取值：FDL                                                                                                           |
+| roleArn       | False | String | 可选参数，流程执行依赖的授权角色资源描述符信息。用于在执行流程时，Serverless 工作流服务扮演该角色（AssumeRole）操作相关的流程资源。格式为 `acs:ram:${region}:${accountID}:${role}` |
+| executionMode | False | Enum   | 可选参数，执行模式，枚举类型，可以是快速执行模式 Express 或者标准执行式 Standard，默认为 Standard。                                                          |
 
 完整的 yaml 示例:
 

@@ -1,0 +1,72 @@
+---
+import Tag from "./Tag.astro";
+import SmoothButton from "./SmoothButton.astro";
+---
+
+<div class="mt-24 buildForms w-full pl-[15vw] pt-[3.6vw]">
+    <div class="text-[2vw] font-medium text-white">
+        <p>超级灵活的构建形态</p>
+    </div>
+
+    <!-- 第一部分：应用 -->
+    <div class="flex flex-row justify-between">
+        <div class="mt-[9vw] lg:mt-[10.5vw] flex flex-col items-start text-[#b3b6c1] text-[2vw] lg:text-[1vw]">
+            <span>插件，组件，代码，配置</span>
+            <div>
+                <span>构建出功能强大的</span>
+                <Tag bgColor="rgba(98, 80, 249, 0.1)" color="#6250f9">应用</Tag>
+            </div>
+            <span>并且可以在流水线无缝集成</span>
+
+            <div class="mt-[2vw] text-[1vw]">
+                <SmoothButton href="https://registry.serverless-devs.com/">查看更多</SmoothButton>
+            </div>
+        </div>
+
+        <img class="w-7/12 mt-[7.5vw]" src="/src/assets/home/buildForm/applications.svg" alt="">
+    </div>
+
+    <!-- 第二部分：组件 -->
+    <div class="flex flex-row justify-between">
+        <img class="w-6/12 mt-[5vw]" src="/src/assets/home/buildForm/components.svg" alt="">
+
+        <div class="flex flex-col items-end text-[#b3b6c1] text-[2vw] lg:text-[1vw] mt-[9vw] lg:mt-[10.5vw] mr-[12vw] lg:mr-[15vw]">
+            <span>构建多云能力的基石，</span>
+            <div>
+                <span>每一个</span>
+                <Tag bgColor="rgba(238, 101, 144, 0.1)" color="#ee6590">组件</Tag>
+            </div>
+            <span>都是精心打磨的云资源管理利器</span>
+
+            <div class="mt-[2vw] text-[1vw]">
+                <SmoothButton href="https://registry.serverless-devs.com/">查看更多</SmoothButton>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三部分：插件 -->
+    <div class="flex flex-row justify-between">
+        <div class="mt-[9vw] lg:mt-[10.5vw] flex flex-col items-start text-[#b3b6c1] text-[2vw] lg:text-[1vw]">
+            <div>
+                <span>简单的指令即可配置</span>
+                <Tag bgColor="rgba(51, 175, 169, 0.1)" color="#33afa9">插件</Tag>
+            </div>
+            <span>实现服务的热启动</span>
+
+            <div class="mt-[2vw] text-[1vw]">
+                <SmoothButton href="https://registry.serverless-devs.com/">查看更多</SmoothButton>
+            </div>
+        </div>
+
+        <img class="w-5/12 mt-[5vw] mr-[12vw] lg:mr-[15vw]" src="/src/assets/home/buildForm/plugins.svg" alt="">
+    </div>
+</div>
+
+<style>
+    .buildForms {
+        background-image: url("/src/assets/home/buildForm/background.svg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+</style>
+

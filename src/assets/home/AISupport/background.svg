@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1360" height="653.0000610351562" viewBox="0 0 1360 653.0000610351562" fill="none">
+<rect  x="1360" y="653.0000610351562" width="1360" height="653" transform="rotate(-179.99999704244118 1360 653.0000610351562)" rx="24"    fill="url(#linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_0)" >
+</rect>
+<rect  x="1360" y="653.0000610351562" width="1360" height="653" transform="rotate(-179.99999704244118 1360 653.0000610351562)" rx="24"    fill="url(#linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_1)" >
+</rect>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.45">
+<g filter="url(#filter_87e0914e-2979-4925-a9ac-e9c53a1670d3)">
+<ellipse cx="2049.4444274902344" cy="1095.6954650878906" transform="rotate(-179.99999704244118 1699.0555419921875 739.4263305664062)" rx="350.3888854980469" ry="356.2691345214844"   fill="#3400FA" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.16">
+<g filter="url(#filter_76d75093-1d79-44fb-a93d-62bec4e4b626)">
+<ellipse cx="2337.5000610351562" cy="1496.1382751464844" transform="rotate(-179.99999704244118 1855.8333740234375 1006.3882446289062)" rx="481.66668701171875" ry="489.7500305175781"   fill="#3400FA" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.11">
+<g filter="url(#filter_28f10447-5961-4570-be33-e8a60c53dfb9)">
+<ellipse cx="924.6110534667969" cy="1236.8589782714844" transform="rotate(-179.99999704244118 574.22216796875 880.58984375)" rx="350.3888854980469" ry="356.2691345214844"   fill="#6218FF" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.08">
+<g filter="url(#filter_2cf8f9ac-1506-42f2-9835-f992eed66859)">
+<ellipse cx="1235.3333129882812" cy="432.1322135925293" transform="rotate(-179.99999704244118 975.611083984375 168.05131149291992)" rx="259.72222900390625" ry="264.0809020996094"   fill="#7F0CEB" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.32">
+<g filter="url(#filter_65dd6357-31cf-413d-9561-f36498ab67de)">
+<ellipse cx="2211.416778564453" cy="761.9933624267578" transform="rotate(-179.99999704244118 1706.6112060546875 248.7161407470703)" rx="504.8055725097655" ry="513.2772216796875"   fill="#FFFFFF" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)" opacity="0.32">
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)">
+<g filter="url(#filter_c5c69437-1a8b-4f20-9936-30140f52e43a)">
+<ellipse cx="2246.9998779296875" cy="2700.5000610351562" transform="rotate(-179.99999704244118 1497.9998779296875 1939.0000610351562)" rx="749" ry="761.5"   fill="#121316" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)">
+<g filter="url(#filter_560e49fb-6aff-4d96-9173-b3b9542819f3)">
+<ellipse cx="3244.9999389648438" cy="3104.0001831054688" transform="rotate(-179.99999704244118 2360.9999389648438 2205.0001831054688)" rx="884" ry="899"   fill="#121316" >
+</ellipse>
+</g>
+</g>
+<g mask="url(#mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e)">
+<g filter="url(#filter_65dabc01-0313-4bf4-ae9e-e0e1973a23df)">
+<ellipse cx="1704" cy="2785.0000610351562" transform="rotate(-179.99999704244118 892 1959.0000610351562)" rx="812" ry="826"   fill="#121316" >
+</ellipse>
+</g>
+</g>
+<defs>
+<linearGradient id="linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_0" x1="1360" y1="653.0000610351562" x2="2720" y2="1306.0000610351562" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#1A79FF"  />
+<stop offset="1" stop-color="#9B6AFF"  />
+</linearGradient>
+<linearGradient id="linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_1" x1="2040" y1="848.7142949104309" x2="2040" y2="1311.571487903595" gradientUnits="userSpaceOnUse">
+<stop offset="0" stop-color="#121316"  />
+<stop offset="1" stop-color="#000000" stop-opacity="0" />
+</linearGradient>
+<mask id="mask-6f514fa0-a939-4fa2-be6e-2f3cc996bc2e" style="mask-type:alpha" maskUnits="userSpaceOnUse">
+<rect  x="1360" y="653.0000610351562" width="1360" height="653" transform="rotate(-179.99999704244118 1360 653.0000610351562)" rx="24"    fill="url(#linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_0)" >
+</rect>
+<rect  x="1360" y="653.0000610351562" width="1360" height="653" transform="rotate(-179.99999704244118 1360 653.0000610351562)" rx="24"    fill="url(#linear_fill_6f514fa0-a939-4fa2-be6e-2f3cc996bc2e_1)" >
+</rect>
+</mask>
+<filter id="filter_87e0914e-2979-4925-a9ac-e9c53a1670d3" x="898.27783203125" y="-73.1119384765625" width="900.7777099609375" height="912.5382690429688" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_87e0914e-2979-4925-a9ac-e9c53a1670d3"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_87e0914e-2979-4925-a9ac-e9c53a1670d3" result="shape"/>
+<feGaussianBlur result="gaussian_blur_87e0914e-2979-4925-a9ac-e9c53a1670d3" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_76d75093-1d79-44fb-a93d-62bec4e4b626" x="792.5" y="-73.11181640625" width="1163.3333740234375" height="1179.5000610351562" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_76d75093-1d79-44fb-a93d-62bec4e4b626"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_76d75093-1d79-44fb-a93d-62bec4e4b626" result="shape"/>
+<feGaussianBlur result="gaussian_blur_76d75093-1d79-44fb-a93d-62bec4e4b626" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_28f10447-5961-4570-be33-e8a60c53dfb9" x="-226.5556640625" y="68.05157470703126" width="900.77783203125" height="912.5382690429688" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_28f10447-5961-4570-be33-e8a60c53dfb9"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_28f10447-5961-4570-be33-e8a60c53dfb9" result="shape"/>
+<feGaussianBlur result="gaussian_blur_28f10447-5961-4570-be33-e8a60c53dfb9" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_2cf8f9ac-1506-42f2-9835-f992eed66859" x="356.16650390625" y="-460.1105041503906" width="719.444580078125" height="728.1618022918701" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_2cf8f9ac-1506-42f2-9835-f992eed66859"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_2cf8f9ac-1506-42f2-9835-f992eed66859" result="shape"/>
+<feGaussianBlur result="gaussian_blur_2cf8f9ac-1506-42f2-9835-f992eed66859" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_65dd6357-31cf-413d-9561-f36498ab67de" x="597" y="-877.8383178710938" width="1209.6112060546875" height="1226.5544357299805" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_65dd6357-31cf-413d-9561-f36498ab67de"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_65dd6357-31cf-413d-9561-f36498ab67de" result="shape"/>
+<feGaussianBlur result="gaussian_blur_65dd6357-31cf-413d-9561-f36498ab67de" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_c5c69437-1a8b-4f20-9936-30140f52e43a" x="-100" y="316.00006103515625" width="1697.9998779296875" height="1723" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_c5c69437-1a8b-4f20-9936-30140f52e43a"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_c5c69437-1a8b-4f20-9936-30140f52e43a" result="shape"/>
+<feGaussianBlur result="gaussian_blur_c5c69437-1a8b-4f20-9936-30140f52e43a" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_560e49fb-6aff-4d96-9173-b3b9542819f3" x="493" y="307.00018310546875" width="1968" height="1998" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_560e49fb-6aff-4d96-9173-b3b9542819f3"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_560e49fb-6aff-4d96-9173-b3b9542819f3" result="shape"/>
+<feGaussianBlur result="gaussian_blur_560e49fb-6aff-4d96-9173-b3b9542819f3" stdDeviation="49.99999999999999"/>
+</filter>
+<filter id="filter_65dabc01-0313-4bf4-ae9e-e0e1973a23df" x="-832" y="207.00006103515625" width="1824" height="1852" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="feFloodId_65dabc01-0313-4bf4-ae9e-e0e1973a23df"/>
+<feBlend mode="normal" in="SourceGraphic" in2="feFloodId_65dabc01-0313-4bf4-ae9e-e0e1973a23df" result="shape"/>
+<feGaussianBlur result="gaussian_blur_65dabc01-0313-4bf4-ae9e-e0e1973a23df" stdDeviation="49.99999999999999"/>
+</filter>
+</defs>
+</svg>

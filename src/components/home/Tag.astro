@@ -1,0 +1,10 @@
+---
+//获得tag的文字颜色、背景颜色参数
+const {color, bgColor} = Astro.props;
+---
+
+<div style={`background:${bgColor}`} class="rounded-[32px] w-fit px-[1vw] py-[0.2vw] inline flex-nowrap">
+    <span style={`color:${color}`} class="text-nowrap">
+        <slot/>
+    </span>
+</div>

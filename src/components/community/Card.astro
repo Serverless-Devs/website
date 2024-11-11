@@ -1,0 +1,9 @@
+---
+const { title,img,url} = Astro.props
+---
+
+<div class="flex flex-col items-start bg-[#6a8dfd] shadow-md text-white px-5 py-10 rounded-2xl border border-theme-500 gap-8 flex-shrink-0 flex-grow-0">
+    <img class="rounded-xl" src={img} alt={title}>
+    <p class="font-bold">{title}</p>
+    <a href={url} class="bg-theme hover:bg-[#85a1ff] text-sm px-10 py-3 rounded-full">点击查看</a>
+</div>

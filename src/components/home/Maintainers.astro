@@ -1,0 +1,85 @@
+---
+import Container from "../Container.astro";
+
+const maintainers = [{
+    color: "#b3b6c1"
+}, {
+    color: "linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);"
+}, {
+    icon: "/src/assets/icons/placeholderAvatar1.svg",
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/5129967?v=4",
+}, {
+    color: "#272df4"
+}, {
+    color: "#b3b6c1"
+}, {
+    color: "#1e1f24"
+}, {
+    icon: "/src/assets/icons/placeholderAvatar2.svg",
+}, {
+    color: "#b3b6c1"
+}, {
+    color: "#272df4"
+}, {
+    color: "#1e1f24"
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/16363180?v=4",
+}, {
+    color: "#272df4"
+}, {
+    color: "#d8d8d8"
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/45677661?v=4",
+}, {
+    color: "#b3b6c1"
+}, {
+    icon: "/src/assets/icons/placeholderAvatar3.svg",
+}, {
+    color: "#1e1f24"
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/21079031?v=4",
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/4457084?s=60&v=4",
+}, {
+    icon: "/src/assets/icons/placeholderAvatar4.svg",
+}, {
+    color: "#272df4"
+}, {
+    avatar: "https://avatars.githubusercontent.com/u/5763215?v=4",
+}, {
+    color: "#b3b6c1"
+}]
+---
+<Container>
+    <div class="mt-24 flex flex-col lg:flex-row items-center justify-between pl-20 pr-10 py-11 bg-[#1e1f24] rounded-2xl">
+        <div class="flex flex-row lg:flex-col items-center gap-14 lg:gap-5 text-white mb-10 lg:mb-0">
+            <div class="flex flex-col lg:items-center gap-0 lg:gap-5">
+                <p class="text-sm text-info">MEMBERS</p>
+                <h2 class="text-slate-500 font-bold text-4xl">iServerless<br>开发者社区</h2>
+            </div>
+
+            <a href="#" class="text-black text-sm">
+                <p class="bg-white rounded-3xl lg:mt-24 py-4 px-5 text-center text-nowrap">加入【coming soon】</p>
+            </a>
+        </div>
+        <div class="grid grid-cols-6 flex-wrap gap-3 justify-center">
+            {
+                maintainers.map(maintainer => (
+                        <div class="flex flex-col items-center gap-3 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] ">
+                            {
+                                maintainer.avatar ?? maintainer.icon ? (
+                                        <img class="rounded-xl w-full h-full"
+                                             src={maintainer.avatar ?? maintainer.icon} alt=""/>
+                                ) : (
+                                        <div class="rounded-xl w-full h-full"
+                                             style={`background:${maintainer.color}`}></div>
+                                )
+                            }
+                        </div>
+                ))
+            }
+
+        </div>
+    </div>
+</Container>
