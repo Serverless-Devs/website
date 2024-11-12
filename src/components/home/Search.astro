@@ -1,11 +1,9 @@
 ---
 import '@pagefind/default-ui/css/ui.css';
-import Icon from '../user-components/Icon.astro';
 import { Picture } from "astro:assets";
 import project from 'virtual:starlight/project-context';
-import type { Props } from '../props';
 import SmoothButton from "./SmoothButton.astro";
-import searchIcon from "../../assets/icons/search.svg";
+import searchIcon from "@assets/icons/search.svg";
 
 const { labels } = Astro.props;
 
@@ -124,7 +122,6 @@ const pagefindTranslations = {
 				if (import.meta.env.DEV) return;
 				const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 				onIdle(async () => {
-					// @ts-expect-error — Missing types for @pagefind/default-ui package.
 					const { PagefindUI } = await import('@pagefind/default-ui');
 					new PagefindUI({
 						element: '#starlight__search',

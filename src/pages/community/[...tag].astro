@@ -23,7 +23,7 @@ const allCommunities = await getCollection('communities');
 const allTags = Array.from(new Set(allCommunities.map((community=>community.data.tag))))
 ---
 
-<Layout>
+<Layout title="Community">
     <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-col items-start gap-5">
             <div class="flex flex-row gap-2">
                 {

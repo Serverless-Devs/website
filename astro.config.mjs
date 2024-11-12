@@ -22,7 +22,7 @@ export default defineConfig({
       title: SITE.name,
       favicon: "/favicon.png",
       logo: {
-        src: "./src/assets/logo.png",
+        src: "./public/assets/logo.png",
         replacesTitle: true,
       },
       //自定义组件

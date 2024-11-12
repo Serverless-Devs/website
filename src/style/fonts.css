@@ -2,35 +2,35 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: normal;
-    src: url('/src/assets/fonts/Roboto-Regular.ttf') format('truetype');
+    src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: bold;
-    src: url('/src/assets/fonts/Roboto-Bold.ttf') format('truetype');
+    src: url('/assets/fonts/Roboto-Bold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     font-style: italic;
     font-weight: bold;
-    src: url('/src/assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    src: url('/assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    src: url('/src/assets/fonts/Roboto-Medium.ttf') format('truetype');
+    src: url('/assets/fonts/Roboto-Medium.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 500;
-    src: url('/src/assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
+    src: url('/assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
 }
 
 
@@ -38,14 +38,14 @@
     font-family: 'SourceHanSans';
     font-style: normal;
     font-weight: normal;
-    src: url('/src/assets/fonts/SourceHanSansCN-Normal.ttf') format('truetype');
+    src: url('/assets/fonts/SourceHanSansCN-Normal.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'SourceHanSans';
     font-style: normal;
     font-weight: 500;
-    src: url('/src/assets/fonts/SourceHanSansCN-Medium.ttf') format('truetype');
+    src: url('/assets/fonts/SourceHanSansCN-Medium.ttf') format('truetype');
 }
 
 
@@ -53,7 +53,7 @@
     font-family: 'SourceHanSans';
     font-style: normal;
     font-weight: bold;
-    src: url('/src/assets/fonts/SourceHanSansCN-Bold.ttf') format('truetype');
+    src: url('/assets/fonts/SourceHanSansCN-Bold.ttf') format('truetype');
 }
 
 

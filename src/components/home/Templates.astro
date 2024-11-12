@@ -101,12 +101,12 @@ const ALL_TEMPLATE_SORTS = [{
 
             if (selectedSort === '全部') {
                 document.querySelectorAll('.templates[data-sort-title]').forEach(sortItem => {
-                    sortItem.style.display = 'grid';
+                    sortItem['style'].display = 'grid';
                 })
             } else {
                 document.querySelectorAll(`.templates[data-sort-title]`).forEach(sortItem => {
                     const sortTitle = sortItem.getAttribute('data-sort-title');
-                    sortItem.style.display = selectedSort === sortTitle ? 'grid' : 'none';
+                    sortItem['style'].display = selectedSort === sortTitle ? 'grid' : 'none';
                 })
             }
 

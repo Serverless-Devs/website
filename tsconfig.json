@@ -10,7 +10,7 @@
 			"@helpers/*": ["src/helpers/*"],
 			"@starlight/*": ["node_modules/@astrojs/starlight/*"],
 			"@style/*": ["src/style/*"],
-			"@assets/*": ["src/assets/*"],
+			"@assets/*": ["public/assets/*"],
 			"@utils/*": ["src/utils/*"]
 		}
 	}

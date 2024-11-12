@@ -57,7 +57,7 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
 }
 ---
 
-<Layout>
+<Layout title="社区博客">
     <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-row items-start gap-5">
         <div class="flex flex-col flex-grow-0 gap-5">
             <!--分类选择Tab-->
@@ -68,7 +68,7 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
                         slug: 'all'
                     }, ...TAGS].map((currTag) => (
                             <a href={`/learning/${currTag.slug}`}
-                               class=`${currTag.slug === tag ? 'bg-white text-[#121316]' : ''} border border-[#4a4c57] text-white text-sm font-bold py-2 px-4 rounded-full m-2`>{currTag.name}</a>
+                               class=`${currTag.slug === tag ? 'bg-white !text-[#121316]' : ''} border border-[#4a4c57] text-white text-sm font-bold py-2 px-4 rounded-full m-2`>{currTag.name}</a>
                     ))
                 }
             </div>
