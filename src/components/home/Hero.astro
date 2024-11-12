@@ -29,7 +29,7 @@ import SmoothButton from "./SmoothButton.astro";
             <!-- 大标题 -->
             <h1
                     class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white text-center z-10 !leading-snug">
-                一站式 AI WEB 函数<br>应用开发部署平台
+                    一站式 <span id="typingText"></span><br>开发平台
             </h1>
 
             <!-- 详细描述 -->
@@ -55,7 +55,6 @@ import SmoothButton from "./SmoothButton.astro";
     </main>
 </Container>
 
-
 <script>
     import {BreathingColor} from '@b-design/color';
 
@@ -76,6 +75,21 @@ import SmoothButton from "./SmoothButton.astro";
             "symbolColor": "#6483FF"
         }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        const text = 'AI / 函数 / 应用';
+        const typingText = document.getElementById('typingText');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 200); // 每200毫秒显示一个字符
+            }
+        }
+
+        typeWriter();
+    });
     document.addEventListener('DOMContentLoaded', () => {
         animateBackground = document.querySelector('.hero-background');
 
@@ -127,8 +141,24 @@ import SmoothButton from "./SmoothButton.astro";
     };
 </script>
 
-
 <style>
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #fff; }
+    }
+
+    #typingText {
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #fff; /* 打字机光标 */
+        animation: typing 2s steps(13, end), blink-caret .75s step-end infinite;
+    }
+
     .hero-background {
         position: absolute;
         z-index: -10000;

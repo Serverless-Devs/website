@@ -6,7 +6,7 @@ import starIcon from "@assets/icons/star.svg";
 const {url, title, description, date, hot} = Astro.props;
 ---
 
-<div class="card flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]">
+<div class="card flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]" onclick=`window.open('${url}', '_blank')` >
     <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
         <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
     </div>
@@ -29,5 +29,8 @@ const {url, title, description, date, hot} = Astro.props;
         background: linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%);
         background-clip: text;
         color: transparent;
+    }
+    .card:hover {
+        cursor: pointer; /* 鼠标悬停时更改为点击样式 */
     }
 </style>

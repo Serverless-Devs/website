@@ -1,6 +1,6 @@
 ---
 import {Icon} from "astro-icon/components";
-import CNCF_LOGO from "../assets/CNCF.svg";
+import CNCF_LOGO from "../assets/cncf-white.svg";
 import {Picture} from "astro:assets";
 
 interface FooterLinks {
@@ -46,7 +46,7 @@ const contactWays = [{
 
 <footer class="my-40 mb-10">
     <div class="flex flex-col items-center gap-2">
-        <p class="text-info">Serverless Devs 是 <a href="https://cncf.io/" class="text-accent">CNCF (云原生基金会)</a>
+        <p class="text-info">Serverless Devs 是 <a href="https://cncf.io/" style="color: rgba(38, 44, 244, 1);">CNCF (云原生基金会)</a>
             沙箱项目</p>
         <Picture
                 src={CNCF_LOGO}
