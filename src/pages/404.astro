@@ -23,8 +23,9 @@ const firstCommunityTagUrl = `/community/${firstCommunityTag}`;
 
 <script>
     const pathname = window.location.pathname;
-
-    if (pathname.startsWith('/docs') || pathname === '/overview') {
+    if (pathname.endsWith('.md')) {
+        window.location.replace(pathname.split('.md').join(''));
+    } else if (pathname.startsWith('/docs') || pathname === '/overview') {
         window.location.replace("/docs/overview");
     } else if (pathname.startsWith('/community')) {
         window.location.replace(document.querySelector('[data-first-community-url]')['dataset'].firstCommunityUrl);

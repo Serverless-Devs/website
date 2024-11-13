@@ -3,19 +3,33 @@ import {Picture} from "astro:assets";
 import blueFireIcon from "@assets/icons/blurFire.svg";
 import starIcon from "@assets/icons/star.svg";
 
-const {url, title, description, date, hot} = Astro.props;
+const {url, title, description, date, hot, logo} = Astro.props;
+const iconMap = {
+    'start-springboot-v3': starIcon,
+    'video-transcode-v3': starIcon,
+    'start-modelscope-v3': starIcon,
+    'fc-ai-character': starIcon,
+    'fc-stable-diffusion-v3': starIcon,
+    'start-flask-v3': starIcon
+}
 ---
 
 <div class="card flex flex-col gap-8 text-white border border-[#4a4c57] rounded-xl p-5 hover:bg-[#1e1f22]" onclick=`window.open('${url}', '_blank')` >
-    <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-fit">
-        <Picture class="rounded-full" src={starIcon} alt="starIcon"/>
+    <div class="p-3 bg-white bg-opacity-5 rounded-xl border-[0.8px] border-[#b3b6c1] w-[52px] h-[52px]">
+        <Picture 
+            class="object-contain w-full h-full" 
+            src={iconMap[title] || logo || starIcon} 
+            alt="starIcon" 
+            width={52} 
+            height={52} 
+        />
     </div>
     <div class="flex flex-col">
         <a class="text-lg font-bold title"
            href={url}>{title}</a>
         <p class="text-sm text-info">{description}</p>
     </div>
-    <div class="flex flex-row justify-between items-center">
+    <div class="flex flex-row justify-between items-center mt-auto">
         <div class="flex flex-row gap-1 items-center text-white">
             <Picture class="rounded-full" src={blueFireIcon} alt="blueFireIcon"/>
             <span class="text-sm font-light">{hot}</span>

@@ -11,20 +11,26 @@ import SmoothButton from "./SmoothButton.astro";
             <div class="hero-background"></div>
 
             <!-- 热门模板 -->
-            <a href="https://registry.serverless-devs.com/"
-               class="hidden md:flex bg-white bg-opacity-20 opacity-80 border-[#9295a5] border-[0.8px] px-3 py-2 w-fit rounded-3xl text-center flex-row items-center gap-3 z-10">
+            <div
+               class="hidden md:flex bg-white bg-opacity-20 opacity-80 border-[#9295a5] border-[0.8px] px-3 py-2 w-fit rounded-3xl text-center flex-row items-center gap-3 z-10 ">
                 <div class="text-center text-white rounded-3xl text-xs px-5 py-2"
                      style="background:linear-gradient(134.09deg, rgba(38, 44, 244, 1) 0%, rgba(113, 64, 255, 1) 100%)">
                     HOT !
                 </div>
-                <p class="text-white text-xs">stable-diffusion,comfyui,cosyvoice,ollama 等应用模版上架</p>
-                <Picture
+                <p class="text-white text-xs mr-2">
+                    <a href="https://registry.serverless-devs.com/details.html?name=fc-stable-diffusion-v3&package_type=v3" target="_blank" class="hover:text-[#ee6590]">Stable-Diffusion</a>, 
+                    <a href="https://registry.serverless-devs.com/details.html?name=fc-comfyui&package_type=v3" target="_blank" class="hover:text-[#ee6590]">ComfyUI</a>, 
+                    <a href="https://registry.serverless-devs.com/details.html?name=cosyvoice&package_type=v3" target="_blank" class="hover:text-[#ee6590]">CosyVoice</a>, 
+                    <a href="https://registry.serverless-devs.com/details.html?name=ollama&package_type=v3" target="_blank" class="hover:text-[#ee6590]">Ollama</a>, 
+                    <a href="https://registry.serverless-devs.com/details.html?name=fc-gpt-sovits&package_type=v3" target="_blank" class="hover:text-[#ee6590]">GPT-SoVITS</a>
+                     等应用模版上架</p>
+                <!-- <Picture
                         src={nextIcon}
                         alt="nextIcon"
                         loading="eager"
                         format="avif"
-                />
-            </a>
+                /> -->
+            </div>
 
             <!-- 大标题 -->
             <h1

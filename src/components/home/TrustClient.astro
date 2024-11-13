@@ -1,21 +1,17 @@
 ---
 import Container from "../Container.astro";
 const clients = [
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png",
-    "https://img.js.design/assets/img/670b2fd0e466ac358f5d274c.png"
+    "https://img.alicdn.com/imgextra/i3/O1CN01pJYzKW1I4lhimxyCI_!!6000000000840-55-tps-297-85.svg",
+    "https://img.alicdn.com/imgextra/i3/O1CN01UV8NPW1l8XpKk1ZOl_!!6000000004774-55-tps-142-32.svg"
 ];
 ---
 <Container>
     <div class="flex flex-col items-center gap-11 py-24 overflow-hidden">
-        <p class="text-white ">They trust us</p>
+        <p class="text-white ">合作企业</p>
         <div class="w-full flex flex-row justify-around gap-10 flex-wrap">
             {
                 clients.map(client => (
-                        <img class="w-28" src={client}/>
+                        <img class="w-32" src={client}/>
                 ))
             }
         </div>

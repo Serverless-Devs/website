@@ -5,46 +5,22 @@ import {Picture} from "astro:assets";
 import Container from "../Container.astro";
 import LineCard from "../LineCard.astro";
 
+// GET api.devsapp.cn/v3/packages/releases
+const [components, applications, plugins] = await Promise.all([
+  fetch('https://api.devsapp.cn/v3/packages/releases?page=1&platform=3&type=1&sort=download').then(res => res.json()),
+  fetch('https://api.devsapp.cn/v3/console/1/tabs/5').then(res => res.json()),
+  fetch('https://api.devsapp.cn/v3/packages/releases?page=1&platform=3&type=2&sort=download').then(res => res.json())
+]);
+
 const TEMPLATE_SORTS = [{
     title: "应用",
-    templates: [{
-        title: "cap-comfyui-board",
-        description: "基于 ComfyUI API 搭建涂鸦实时绘板。",
-        hot: "2847",
-        date: "2024.09.23",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }, {
-        title: "fc-stable-diffusion-v3",
-        description:
-            "使用serverless devs将stable-diffusion部署",
-        hot: "31344",
-        date: "2024.09.13",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }, {
-        title: "fc3",
-        description: "阿里云函数计算全生命周期管理",
-        hot: "107594",
-        date: "2024.09.26",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }, {
-        title: "volcano-vefaas",
-        description: "火山引擎函数计算 VeFaas 核心组件",
-        hot: "47281",
-        date: "2024.09.24",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }, {
-        title: "init-fc-alias",
-        description: "初始fc资源",
-        hot: "8342",
-        date: "2023.01.12",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }, {
-        title: "use-qualifier-deploy-fc",
-        description: "使用fc部署静态资源",
-        hot: "2628",
-        date: "2023.01.12",
-        url: 'https://registry.serverless-devs.com/details.html?name=start-rag-on-flow&package_type=v3'
-    }]
+    templates: applications.body.slice(0, 12)
+},{
+    title: "组件",
+    templates: components.body.slice(0, 12)
+},{
+    title: "插件",
+    templates: plugins.body.slice(0, 12)
 }]
 
 const ALL_TEMPLATE_SORTS = [{
@@ -68,16 +44,19 @@ const ALL_TEMPLATE_SORTS = [{
         </div>
         {
             ALL_TEMPLATE_SORTS.map(sort => (
-                    <div class="templates grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5"
-                         data-sort-title={sort.title}>
+                    <div class={`templates grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 ${sort.title == '全部' ? '' : 'hidden'}`}
+                         data-sort-title={sort.title} >
                         {
                             sort.templates.map(template => (
                                     <LineCard
-                                            title={template.title}
-                                            url={template.url}
-                                            description={template.description}
-                                            date={template.date}
-                                            hot={template.hot}>
+                                            title={template?.package?.name || template.name}
+                                            url={`https://registry.serverless-devs.com/details.html?name=${template?.package?.name || template.name}&package_type=v3`}
+                                            description={template?.package?.description || template.description}
+                                            date={template?.package?.latest_create || template.latest_create}
+                                            hot={template?.package?.download || template.download}
+                                            logo={template.logo || ''}
+                                            >
+                                            
                                     </LineCard>
                             ))
                         }
@@ -91,7 +70,8 @@ const ALL_TEMPLATE_SORTS = [{
 
     document.querySelectorAll('.templateSort').forEach(item => {
         item.addEventListener('click', function () {
-            const selectedSort = item.getAttribute('data-sort-title');
+            const selectedSort = item.getAttribute('data-sort-title') || '全部';
+            console.log(selectedSort)
 
             document.querySelectorAll('.templateSort').forEach(sortItem => {
                 sortItem.classList.remove('selectedSort');
@@ -99,17 +79,10 @@ const ALL_TEMPLATE_SORTS = [{
 
             item.classList.add('selectedSort');
 
-            if (selectedSort === '全部') {
-                document.querySelectorAll('.templates[data-sort-title]').forEach(sortItem => {
-                    sortItem['style'].display = 'grid';
-                })
-            } else {
-                document.querySelectorAll(`.templates[data-sort-title]`).forEach(sortItem => {
-                    const sortTitle = sortItem.getAttribute('data-sort-title');
-                    sortItem['style'].display = selectedSort === sortTitle ? 'grid' : 'none';
-                })
-            }
-
+            document.querySelectorAll(`.templates[data-sort-title]`).forEach(sortItem => {
+                const sortTitle = sortItem.getAttribute('data-sort-title');
+                sortItem['style'].display = selectedSort === sortTitle ? 'grid' : 'none';
+            })
         })
     })
 

@@ -60,20 +60,21 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
 <Layout title="社区博客">
     <div class="max-w-screen-xl m-auto mt-10 px-5 flex flex-row items-start gap-5">
         <div class="flex flex-col flex-grow-0 gap-5">
-            <!--分类选择Tab-->
+            <!-- 分类选择Tab -->
             <div class="flex flex-row gap-2">
                 {
                     [{
                         name: '全部',
                         slug: 'all'
                     }, ...TAGS].map((currTag) => (
-                            <a href={`/learning/${currTag.slug}`}
-                               class=`${currTag.slug === tag ? 'bg-white !text-[#121316]' : ''} border border-[#4a4c57] text-white text-sm font-bold py-2 px-4 rounded-full m-2`>{currTag.name}</a>
+                            <a href={`/learning/${currTag.slug}`} class={`${currTag.slug === tag ? 'bg-white !text-[#121316]' : ''} border border-[#4a4c57] text-white text-sm font-bold py-2 px-4 rounded-full m-2`}>
+                                {currTag.name}
+                            </a>
                     ))
                 }
             </div>
 
-            <!--文章列表-->
+            // <!--文章列表-->
             <div class="flex flex-row">
                 <div class="flex flex-col gap-5">
                     {
@@ -89,22 +90,22 @@ export async function getStaticPaths({paginate}: GetStaticPathsOptions) {
         </div>
 
         <!--侧边栏-->
-        <div class="hidden lg:flex flex-col w-5/12 px-10 items-start gap-12 mt-[35px]">
-            {
-                learningChannels.map(channel => (
-                        <div class="w-full flex flex-col gap-5">
-                            <p class="font-bold text-xl text-white">{channel.name}</p>
-                            <div class="flex flex-col w-full border border-[#4a4c57] hover:bg-[#1e1f22] shadow-md px-5 py-5 gap-3 border-b rounded-2xl">
-                                {
-                                    channel.pages.map(page => (
-                                            <a class="text-white" href={page.url}>{page.name}</a>
-                                    ))
-                                }
-                            </div>
-                        </div>
-                ))
-            }
-        </div>
+        <!-- // <div class="hidden lg:flex flex-col w-5/12 px-10 items-start gap-12 mt-[35px]">
+        //     {
+        //         learningChannels.map(channel => (
+        //                 <div class="w-full flex flex-col gap-5">
+        //                     <p class="font-bold text-xl text-white">{channel.name}</p>
+        //                     <div class="flex flex-col w-full border border-[#4a4c57] hover:bg-[#1e1f22] shadow-md px-5 py-5 gap-3 border-b rounded-2xl">
+        //                         {
+        //                             channel.pages.map(page => (
+        //                                     <a class="text-white" href={page.url}>{page.name}</a>
+        //                             ))
+        //                         }
+        //                     </div>
+        //                 </div>
+        //         ))
+        //     }
+        // </div> -->
     </div>
 </Layout>
 

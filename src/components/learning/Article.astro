@@ -4,9 +4,9 @@ const {post} = Astro.props;
 ---
 
 <div class="card flex flex-col md:flex-row items-center gap-5 border border-[#4a4c57] hover:bg-[#1e1f22] shadow-md p-7 rounded-2xl flex-shrink-0 flex-grow-0">
-    <img class="w-full md:w-5/12 sm:h-full object-cover rounded-lg overflow-hidden left-content"
+    <img class="w-[30%] md:w-5/12 sm:h-full object-cover rounded-lg overflow-hidden left-content"
          src={post.data.img} alt={post.data.title}></img>
-    <div class="flex flex-col gap-5 text-white">
+    <div class="w-[70%] flex flex-col gap-5 text-white">
         <span class="text-sm">{post.data.date}</span>
         <a href={'/' + post.slug} class="title font-bold">{post.data.title}</a>
         <p class="">{post.data.description}</p>

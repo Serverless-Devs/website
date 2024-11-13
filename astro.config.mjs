@@ -6,6 +6,7 @@ import icon from "astro-icon";
 import { SIDEBAR, SITE } from "./src/utils/config.ts";
 import topLevelAwait from "vite-plugin-top-level-await";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
+import rehypeAstroRelativeMarkdownLinks from "astro-rehype-relative-markdown-links";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,13 +17,18 @@ export default defineConfig({
   image: {
     domain: ["img.alicdn"],
   },
+  // markdown: {
+  //   rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
+  // },
+  // trailingSlash: 'never',
   integrations: [
     autoImportComponents(),
     starlight({
       title: SITE.name,
       favicon: "/favicon.png",
       logo: {
-        src: "./public/assets/logo.png",
+        light: "./public/assets/logo-black.svg",
+        dark: "./public/assets/logo.png",
         replacesTitle: true,
       },
       //自定义组件

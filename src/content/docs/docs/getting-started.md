@@ -18,7 +18,7 @@ $ s -v
 @serverless-devs/s: 3.0.0, s-home: /root/.s, linux-x64, node-v16.13.1
 ```
 
-[更多安装方式请参考](user-guidenstall.md)
+[更多安装方式请参考](user-guide/install.md)
 
 ## 配置阿里云密钥
 
@@ -61,7 +61,7 @@ s config add
 ? Please create alias for key pair. If not, please enter to skip default
 ```
 
-[更多配置方式请参考](user-guideonfig.md)
+[更多配置方式请参考](user-guide/config.md)
 
 ## 初始化函数示例
 
