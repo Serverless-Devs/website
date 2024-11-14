@@ -99,7 +99,6 @@ Tags: #标签详情
 Category: XXXXX # 取值内容参考：https://api.devsapp.cn/v3/common/args.html
 Service: # 使用的服务
   XXXXX: # 取值内容参考：https://api.devsapp.cn/v3/common/args.html
-    # Runtime: Python 3.6 如果服务是函数，还需要增加Runtime
     Authorities: #权限描述
       - XXXXX # 所需要的权限，例如AliyunFCFullAccess
 Organization: 组织名称
@@ -177,7 +176,6 @@ Category: 基础云服务
 ```yaml
 Service: # 使用的服务
   函数计算:
-    # Runtime: Python 3.6 如果服务是函数，还需要增加Runtime，取值包括：Node.JS, Python, PHP, Java, Go, 其它
     Authorities: #权限描述
       - AliyunFCFullAccess # 所需要的权限，例如AliyunFCFullAccess
 ```
