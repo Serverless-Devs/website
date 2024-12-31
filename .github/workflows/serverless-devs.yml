@@ -2,7 +2,7 @@ name: Serverless Devs Project CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [main_backup]
 
 jobs:
   serverless-devs-cd:
