@@ -16,7 +16,7 @@ jobs:
       - run: npm install
       - run: npm run build   
       - run: npm install -g @serverless-devs/s
-      - run: s config add --AccessKeyID ${{secrets.YUMU_AK}}  --AccessKeySecret ${{secrets.YUMU_SK}} -a default -f 
+      - run: s config add --AccessKeyID ${{secrets.ACCESSKEYID}} --AccessKeySecret ${{secrets.ACCESSKEYSECRET}} --AccountID ${{secrets.ACCOUNTID}} -a default -f 
       - run: rm -rf .git
       - run: rm -rf .github
       - run: rm -rf node_modules
