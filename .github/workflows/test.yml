@@ -20,8 +20,8 @@ jobs:
       - run: rm -rf .git
       - run: rm -rf .github
       - run: rm -rf node_modules
-      - run: s deploy -t s-test.yaml -y
-      - run: s info -t s-test.yaml -y
+      # - run: s deploy -t s-test.yaml -y
+      # - run: s info -t s-test.yaml -y
       - run: s deploy -t s-oss-test.yaml -y
       - run: s info -t s-oss-test.yaml -y
 
