@@ -50,7 +50,7 @@ const ALL_TEMPLATE_SORTS = [{
                             sort.templates.map(template => (
                                     <LineCard
                                             title={template?.package?.name || template.name}
-                                            url={`https://registry.serverless-devs.com/details.html?name=${template?.package?.name || template.name}&package_type=v3`}
+                                            url={`https://registry.serverless-devs.com/details/${template?.package?.name || template.name}`}
                                             description={template?.package?.description || template.description}
                                             date={template?.package?.latest_create || template.latest_create}
                                             hot={template?.package?.download || template.download}
