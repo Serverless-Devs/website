@@ -5,7 +5,7 @@
 
 edition: 3.0.0
 name: flask-app
-access: agentcraft
+access: default
 vars:
   region: cn-hangzhou
 resources:
