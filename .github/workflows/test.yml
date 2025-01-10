@@ -15,7 +15,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm run build   
-      - run: npm install -g @serverless-devs/s
+      - run: npm install -g @serverless-devs/s@3.1.5
       - run: s config add --AccessKeyID ${{secrets.ACCESSKEYID}} --AccessKeySecret ${{secrets.ACCESSKEYSECRET}} --AccountID ${{secrets.ACCOUNTID}} -a default -f 
       - run: rm -rf .git
       - run: rm -rf .github

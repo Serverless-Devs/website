@@ -25,6 +25,8 @@ tags:
     slug: practice
   - name: 技术探索
     slug: explore
+  - name: 功能发布
+    slug: publish
 
 sidebar:
   - label: docs
