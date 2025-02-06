@@ -1,16 +1,30 @@
 ---
 import Container from "../Container.astro";
-const clients = [
-    "https://img.alicdn.com/imgextra/i3/O1CN01pJYzKW1I4lhimxyCI_!!6000000000840-55-tps-297-85.svg",
-    "https://img.alicdn.com/imgextra/i3/O1CN01UV8NPW1l8XpKk1ZOl_!!6000000004774-55-tps-142-32.svg",
-    "https://img.alicdn.com/imgextra/i4/O1CN01Ak686F1U5ThzZVnpz_!!6000000002466-2-tps-1853-456.png",
-    "https://img.alicdn.com/imgextra/i2/O1CN014Gw8Vu25qmOlQ6wJt_!!6000000007578-55-tps-181-60.svg"
+// 定义宜搭图标
+const yidaPic = 'https://img.alicdn.com/imgextra/i3/O1CN01pJYzKW1I4lhimxyCI_!!6000000000840-55-tps-297-85.svg'
+// 定义阿里云图标
+const aliyunPic = '/assets/aliyun.png'
+// 定义火山引擎图标
+const huoshanPic = '/assets/huoshan-yinqing.png'
+// 定义爱无限图标
+const aiwuxianPic = 'https://img.alicdn.com/imgextra/i2/O1CN014Gw8Vu25qmOlQ6wJt_!!6000000007578-55-tps-181-60.svg'
+
+const clients:string[] = [
+    // "https://img.alicdn.com/imgextra/i3/O1CN01pJYzKW1I4lhimxyCI_!!6000000000840-55-tps-297-85.svg",
+    // "https://img.alicdn.com/imgextra/i3/O1CN01UV8NPW1l8XpKk1ZOl_!!6000000004774-55-tps-142-32.svg",
+    // "https://img.alicdn.com/imgextra/i4/O1CN01Ak686F1U5ThzZVnpz_!!6000000002466-2-tps-1853-456.png",
+    // "https://img.alicdn.com/imgextra/i2/O1CN014Gw8Vu25qmOlQ6wJt_!!6000000007578-55-tps-181-60.svg",
+
+    aliyunPic,
+    aiwuxianPic,
+    huoshanPic,
+    yidaPic,
 ];
 ---
 <Container>
     <div class="flex flex-col items-center gap-11 py-24 overflow-hidden">
         <p class="text-white text-[14px]">They trust us</p>
-        <div class="w-full flex flex-row justify-center gap-[60px] flex-wrap">
+        <div class="w-full flex flex-row justify-center items-center gap-[60px] flex-wrap">
             {
                 clients.map(client => (
                         <img class="w-[160px]" src={client}/>
